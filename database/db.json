@@ -1,0 +1,442 @@
+{
+  "users": [
+    {
+      "id": "0fa32ff5-fb3a-461f-9346-83a44c6bb166",
+      "name": "Andre Soledade",
+      "emails": [
+        {
+          "email": "andresoledade@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71993237377",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "21a361c0-1e79-484e-ace5-05f72ebb4fd4",
+      "name": "Caroline Campos",
+      "emails": [
+        {
+          "email": "financeiro1@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71997428974",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "102ddc02-eae2-450e-88ae-531f6b0be871",
+      "name": "Cassia Cazaes",
+      "emails": [
+        {
+          "email": "projetos01@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71992049337",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "1e1f1179-911e-489a-9403-1c569927eafb",
+      "name": "Cleriston Rios",
+      "emails": [
+        {
+          "email": "gerente.adm@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71996730348",
+          "type": "pessoal"
+        },
+        {
+          "number": "71982346190",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "9f13e904-ecb8-4481-96c9-ac45934c0caf",
+      "name": "Danilo Costa",
+      "emails": [
+        {
+          "email": "comercial07@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": []
+    },
+    {
+      "id": "22e1da03-8bc1-4b84-8376-492ca417e838",
+      "name": "Davi Silva",
+      "emails": [
+        {
+          "email": "almoxarifado@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71999566893",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "0e25a8eb-baa3-45c1-861e-f70e2627fdb0",
+      "name": "Débora Ribeiro",
+      "emails": [
+        {
+          "email": "comercial06@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": []
+    },
+    {
+      "id": "962e3d61-5769-420e-baff-65e4b51d3929",
+      "name": "Érico Santos",
+      "emails": [
+        {
+          "email": "tecnico01@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": []
+    },
+    {
+      "id": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
+      "name": "Francisca Cruz",
+      "emails": [
+        {
+          "email": "franciscacruz@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71991431312",
+          "type": "pessoal"
+        },
+        {
+          "number": "71999411203",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "8894d896-eb7e-4136-9981-55f1c4a10e60",
+      "name": "Helder Souza",
+      "emails": [
+        {
+          "email": "logistica@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71999119466",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "7f737f4b-143b-47f7-b478-c31338ef232b",
+      "name": "Jorge Penna",
+      "emails": [
+        {
+          "email": "jorgepenna@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71999858845",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "533cc8eb-2273-43f0-9fda-b225d201faa7",
+      "name": "José Tenório",
+      "emails": [
+        {
+          "email": "comercial08@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": []
+    },
+    {
+      "id": "0507027b-c1af-4826-bc6a-0ef4b8f866ce",
+      "name": "Kailane Marques",
+      "emails": [
+        {
+          "email": "comercial10@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": []
+    },
+    {
+      "id": "41a53e9e-2716-47a1-a9ae-bead2f7cf9f7",
+      "name": "Kailon Carregosa",
+      "emails": [
+        {
+          "email": "pcp@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": []
+    },
+    {
+      "id": "334a7992-7331-436a-8735-02995a0b463c",
+      "name": "Kaique Tosta",
+      "emails": [
+        {
+          "email": "gerente.producao@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71992160020",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "fea35aba-59d3-4320-9f72-e8c536533686",
+      "name": "Laissa Mattos",
+      "emails": [
+        {
+          "email": "gerente.loja@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71996355486",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "40532b33-3e5d-4051-8832-3f161c73e2cc",
+      "name": "Leandro Amaral",
+      "emails": [
+        {
+          "email": "comercial04@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71991440613",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "b7e870eb-3f54-4aed-b1f4-67a4e94aae2d",
+      "name": "Lennon Reis",
+      "emails": [
+        {
+          "email": "pcp01@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": []
+    },
+    {
+      "id": "a3391ef5-202d-4676-acc6-61b181c7aac2",
+      "name": "Marcos Oliveira",
+      "emails": [
+        {
+          "email": "marcos@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71992339491",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "b9011537-0208-48dc-ac99-1d62d698242d",
+      "name": "Patricia Dipedra",
+      "emails": [
+        {
+          "email": "patricia@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71991714159",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "32126a94-dbc0-4cec-a00f-3317e5c3de2e",
+      "name": "Pedro Oliveira",
+      "emails": [
+        {
+          "email": "comercial05@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71996498614",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "0e4bfb6a-90d0-424e-adc9-a04fa4c0832d",
+      "name": "Ralph Ramos",
+      "emails": [
+        {
+          "email": "dev@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71999227700",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "ecbccd50-eb65-4eb5-9487-86e41db59dd6",
+      "name": "Rebeca Freitas",
+      "emails": [
+        {
+          "email": "comercial03@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71992339558",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "f23f17a6-2864-400b-a775-8ba940f064fd",
+      "name": "Romario Romero",
+      "emails": [
+        {
+          "email": "romario.romero@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71996730348",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "78cfa935-4a6d-4a14-86c9-0bcf40afca36",
+      "name": "Tiago Giffoni",
+      "emails": [
+        {
+          "email": "tiago@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71988992889",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "c441183f-ac16-491b-8f90-f6e35cefba46",
+      "name": "Vicente Santana",
+      "emails": [
+        {
+          "email": "tecnico02@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71981353181",
+          "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
+      "name": "Wallace Araujo",
+      "emails": [
+        {
+          "email": "comercial02@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71982764178",
+          "type": "dipedra"
+        }
+      ]
+    }
+  ],
+  "availableEmails": [],
+  "availablePhones": [
+    {
+      "number": "71996058883"
+    },
+    {
+      "number": "71996282288"
+    },
+    {
+      "number": "71996379527"
+    },
+    {
+      "number": "71997339498"
+    },
+    {
+      "number": "71999001163"
+    },
+    {
+      "number": "71999009497"
+    },
+    {
+      "number": "71999551699"
+    },
+    {
+      "number": "71999690216"
+    },
+    {
+      "number": "71999815414"
+    },
+    {
+      "number": "71999972265"
+    }
+  ]
+}

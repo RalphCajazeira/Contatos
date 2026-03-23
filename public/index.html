@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestor de Contatos - Dipedra</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="page-header">
+        <div>
+          <h1>Gestor de E-mails e Linhas</h1>
+          <p>Contatos, e-mails livres e números livres em um só lugar.</p>
+        </div>
+
+        <div class="header-actions">
+          <button id="btnExport" class="btn btn-primary">Exportar Excel</button>
+        </div>
+      </header>
+
+      <section class="toolbar-card">
+        <div class="toolbar">
+          <input
+            id="search"
+            class="input"
+            type="text"
+            placeholder="Buscar contato..."
+          />
+          <button id="btnAddContact" class="btn btn-secondary">
+            Novo contato
+          </button>
+          <button id="btnAddFreeEmail" class="btn btn-secondary">
+            Novo e-mail livre
+          </button>
+          <button id="btnAddFreePhone" class="btn btn-secondary">
+            Novo número livre
+          </button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Contatos</h2>
+          <span id="contactCount" class="badge">0</span>
+        </div>
+        <div id="usersList" class="contact-list"></div>
+      </section>
+
+      <section class="bottom-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>E-mails livres</h2>
+            <span id="freeEmailCount" class="badge">0</span>
+          </div>
+          <div id="freeEmailsList" class="resource-list"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Números livres</h2>
+            <span id="freePhoneCount" class="badge">0</span>
+          </div>
+          <div id="freePhonesList" class="resource-list"></div>
+        </section>
+      </section>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay hidden">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 id="modalTitle">Modal</h3>
+          <button id="modalClose" class="icon-btn" type="button">×</button>
+        </div>
+        <form id="modalForm" class="modal-form">
+          <div id="modalFields" class="modal-fields"></div>
+          <div class="modal-actions">
+            <button type="button" id="modalCancel" class="btn btn-secondary">
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
