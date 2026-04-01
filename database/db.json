@@ -104,7 +104,23 @@
           "type": "principal"
         }
       ],
-      "phones": []
+      "phones": [
+        {
+          "number": "71999815414",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "e9ad9b1f-5491-410f-9a6f-168f3f900488",
+      "name": "Encarregado Expedição",
+      "emails": [],
+      "phones": [
+        {
+          "number": "71999551699",
+          "type": "dipedra"
+        }
+      ]
     },
     {
       "id": "962e3d61-5769-420e-baff-65e4b51d3929",
@@ -115,7 +131,12 @@
           "type": "principal"
         }
       ],
-      "phones": []
+      "phones": [
+        {
+          "number": "71996379527",
+          "type": "dipedra"
+        }
+      ]
     },
     {
       "id": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
@@ -189,7 +210,12 @@
           "type": "principal"
         }
       ],
-      "phones": []
+      "phones": [
+        {
+          "number": "71996058883",
+          "type": "dipedra"
+        }
+      ]
     },
     {
       "id": "41a53e9e-2716-47a1-a9ae-bead2f7cf9f7",
@@ -278,6 +304,17 @@
       ]
     },
     {
+      "id": "33826c28-03a4-48a1-85e0-ba45718089de",
+      "name": "Nilda",
+      "emails": [],
+      "phones": [
+        {
+          "number": "71997339498",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
       "id": "b9011537-0208-48dc-ac99-1d62d698242d",
       "name": "Patricia Dipedra",
       "emails": [
@@ -306,6 +343,10 @@
         {
           "number": "71996498614",
           "type": "pessoal"
+        },
+        {
+          "number": "71999690216",
+          "type": "dipedra"
         }
       ]
     },
@@ -409,31 +450,13 @@
   "availableEmails": [],
   "availablePhones": [
     {
-      "number": "71996058883"
-    },
-    {
       "number": "71996282288"
-    },
-    {
-      "number": "71996379527"
-    },
-    {
-      "number": "71997339498"
     },
     {
       "number": "71999001163"
     },
     {
       "number": "71999009497"
-    },
-    {
-      "number": "71999551699"
-    },
-    {
-      "number": "71999690216"
-    },
-    {
-      "number": "71999815414"
     },
     {
       "number": "71999972265"
