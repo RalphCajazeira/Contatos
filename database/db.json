@@ -192,14 +192,19 @@
     },
     {
       "id": "533cc8eb-2273-43f0-9fda-b225d201faa7",
-      "name": "José Tenório",
+      "name": "José Gabriel Tenório",
       "emails": [
         {
           "email": "comercial08@dipedra.com",
           "type": "principal"
         }
       ],
-      "phones": []
+      "phones": [
+        {
+          "number": "71999009497",
+          "type": "dipedra"
+        }
+      ]
     },
     {
       "id": "0507027b-c1af-4826-bc6a-0ef4b8f866ce",
@@ -300,6 +305,17 @@
         {
           "number": "71992339491",
           "type": "pessoal"
+        }
+      ]
+    },
+    {
+      "id": "b679ebf7-45aa-4567-b24d-9f5e4b630edf",
+      "name": "Marcos SW4",
+      "emails": [],
+      "phones": [
+        {
+          "number": "71999972265",
+          "type": "dipedra"
         }
       ]
     },
@@ -417,12 +433,7 @@
     {
       "id": "c441183f-ac16-491b-8f90-f6e35cefba46",
       "name": "Vicente Santana",
-      "emails": [
-        {
-          "email": "tecnico02@dipedra.com",
-          "type": "principal"
-        }
-      ],
+      "emails": [],
       "phones": [
         {
           "number": "71981353181",
@@ -454,12 +465,6 @@
     },
     {
       "number": "71999001163"
-    },
-    {
-      "number": "71999009497"
-    },
-    {
-      "number": "71999972265"
     }
   ]
 }
