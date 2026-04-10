@@ -320,6 +320,17 @@
       ]
     },
     {
+      "id": "e39672e1-3cb9-47aa-a817-3b4c8ec3e031",
+      "name": "Mingo",
+      "emails": [],
+      "phones": [
+        {
+          "number": "71996282288",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
       "id": "33826c28-03a4-48a1-85e0-ba45718089de",
       "name": "Nilda",
       "emails": [],
@@ -460,9 +471,6 @@
   ],
   "availableEmails": [],
   "availablePhones": [
-    {
-      "number": "71996282288"
-    },
     {
       "number": "71999001163"
     }
