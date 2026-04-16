@@ -1,431 +1,235 @@
-const crypto = require("crypto")
-const db = require("../database/db")
-const { normalizePhone } = require("../utils/phone")
+const usersService = require("../services/users.service")
 
-function normalizeEmail(email) {
-  return String(email || "")
-    .trim()
-    .toLowerCase()
-}
-
-function sortUsers(users) {
-  return users.sort((a, b) =>
-    String(a.name || "").localeCompare(String(b.name || ""), "pt-BR", {
-      sensitivity: "base",
-    }),
-  )
-}
-
-function sortAvailableEmails(list) {
-  return list.sort((a, b) =>
-    normalizeEmail(a.email).localeCompare(normalizeEmail(b.email), "pt-BR", {
-      sensitivity: "base",
-    }),
-  )
-}
-
-function sortAvailablePhones(list) {
-  return list.sort((a, b) =>
-    normalizePhone(a.number).localeCompare(normalizePhone(b.number), "pt-BR", {
-      sensitivity: "base",
-    }),
-  )
-}
-
-function uniqueEmails(list) {
-  const seen = new Set()
-  return list.filter((item) => {
-    const key = normalizeEmail(item.email)
-    if (!key || seen.has(key)) return false
-    seen.add(key)
-    return true
+function handleError(res, error) {
+  return res.status(error.status || 500).json({
+    error: error.message || "Erro interno do servidor.",
   })
-}
-
-function uniquePhones(list) {
-  const seen = new Set()
-  return list.filter((item) => {
-    const key = normalizePhone(item.number)
-    if (!key || seen.has(key)) return false
-    seen.add(key)
-    item.number = key
-    return true
-  })
-}
-
-function persistAndSend(res, data, payload) {
-  data.users = sortUsers(data.users || [])
-  data.availableEmails = sortAvailableEmails(
-    uniqueEmails(data.availableEmails || []),
-  )
-  data.availablePhones = sortAvailablePhones(
-    uniquePhones(data.availablePhones || []),
-  )
-  db.write(data)
-  res.json(payload)
 }
 
 exports.getAll = (req, res) => {
-  const data = db.read()
-  data.users = sortUsers(data.users || [])
-  data.availableEmails = sortAvailableEmails(
-    uniqueEmails(data.availableEmails || []),
-  )
-  data.availablePhones = sortAvailablePhones(
-    uniquePhones(data.availablePhones || []),
-  )
-  res.json(data)
+  try {
+    const data = usersService.getAll()
+    res.json(data)
+  } catch (error) {
+    handleError(res, error)
+  }
 }
 
 exports.addUser = (req, res) => {
-  const data = db.read()
-  const name = String(req.body.name || "").trim()
+  try {
+    const user = usersService.addUser({
+      name: req.body.name,
+    })
 
-  if (!name) {
-    return res.status(400).json({ error: "Nome é obrigatório." })
+    res.status(201).json(user)
+  } catch (error) {
+    handleError(res, error)
   }
-
-  const user = {
-    id: crypto.randomUUID(),
-    name,
-    emails: [],
-    phones: [],
-  }
-
-  data.users.push(user)
-  data.users = sortUsers(data.users)
-  db.write(data)
-
-  res.status(201).json(user)
 }
 
 exports.updateUser = (req, res) => {
-  const data = db.read()
-  const user = data.users.find((u) => u.id === req.params.id)
+  try {
+    const user = usersService.updateUser({
+      id: req.params.id,
+      name: req.body.name,
+    })
 
-  if (!user) {
-    return res.status(404).json({ error: "Contato não encontrado." })
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
   }
-
-  const name = String(req.body.name || "").trim()
-  if (!name) {
-    return res.status(400).json({ error: "Nome é obrigatório." })
-  }
-
-  user.name = name
-  data.users = sortUsers(data.users)
-  db.write(data)
-
-  res.json(user)
 }
 
 exports.deleteUser = (req, res) => {
-  const data = db.read()
-  const userIndex = data.users.findIndex((u) => u.id === req.params.id)
+  try {
+    usersService.deleteUser({
+      id: req.params.id,
+    })
 
-  if (userIndex === -1) {
-    return res.status(404).json({ error: "Contato não encontrado." })
+    res.sendStatus(204)
+  } catch (error) {
+    handleError(res, error)
   }
-
-  const user = data.users[userIndex]
-
-  for (const email of user.emails || []) {
-    if (email.type !== "pessoal") {
-      data.availableEmails.push({ email: email.email })
-    }
-  }
-
-  for (const phone of user.phones || []) {
-    if (phone.type !== "pessoal") {
-      data.availablePhones.push({ number: phone.number })
-    }
-  }
-
-  data.users.splice(userIndex, 1)
-
-  data.users = sortUsers(data.users)
-  data.availableEmails = sortAvailableEmails(uniqueEmails(data.availableEmails))
-  data.availablePhones = sortAvailablePhones(uniquePhones(data.availablePhones))
-
-  db.write(data)
-  res.sendStatus(204)
 }
 
 exports.addAvailableEmail = (req, res) => {
-  const data = db.read()
-  const email = normalizeEmail(req.body.email)
+  try {
+    const result = usersService.addAvailableEmail({
+      email: req.body.email,
+      type: req.body.type,
+    })
 
-  if (!email) {
-    return res.status(400).json({ error: "E-mail é obrigatório." })
+    res.status(201).json(result)
+  } catch (error) {
+    handleError(res, error)
   }
-
-  const assigned = data.users.some((user) =>
-    (user.emails || []).some((item) => normalizeEmail(item.email) === email),
-  )
-  if (assigned) {
-    return res
-      .status(409)
-      .json({ error: "Este e-mail já está atribuído a um contato." })
-  }
-
-  const exists = (data.availableEmails || []).some(
-    (item) => normalizeEmail(item.email) === email,
-  )
-  if (exists) {
-    return res
-      .status(409)
-      .json({ error: "Este e-mail já está na lista de livres." })
-  }
-
-  data.availableEmails.push({ email })
-  data.availableEmails = sortAvailableEmails(uniqueEmails(data.availableEmails))
-  db.write(data)
-
-  res.status(201).json({ email })
 }
 
 exports.addAvailablePhone = (req, res) => {
-  const data = db.read()
-  const number = normalizePhone(req.body.number)
+  try {
+    const result = usersService.addAvailablePhone({
+      number: req.body.number,
+    })
 
-  if (!number) {
-    return res.status(400).json({ error: "Número é obrigatório." })
+    res.status(201).json(result)
+  } catch (error) {
+    handleError(res, error)
   }
-
-  const assigned = data.users.some((user) =>
-    (user.phones || []).some((item) => normalizePhone(item.number) === number),
-  )
-  if (assigned) {
-    return res
-      .status(409)
-      .json({ error: "Este número já está atribuído a um contato." })
-  }
-
-  const exists = (data.availablePhones || []).some(
-    (item) => normalizePhone(item.number) === number,
-  )
-  if (exists) {
-    return res
-      .status(409)
-      .json({ error: "Este número já está na lista de livres." })
-  }
-
-  data.availablePhones.push({ number })
-  data.availablePhones = sortAvailablePhones(uniquePhones(data.availablePhones))
-  db.write(data)
-
-  res.status(201).json({ number })
 }
 
 exports.assignEmail = (req, res) => {
-  const data = db.read()
-  const { userId, email, type, fromAvailable } = req.body
+  try {
+    const user = usersService.assignEmail({
+      userId: req.body.userId,
+      email: req.body.email,
+      type: req.body.type,
+      fromAvailable: req.body.fromAvailable,
+    })
 
-  const user = data.users.find((u) => u.id === userId)
-  if (!user) {
-    return res.status(404).json({ error: "Contato não encontrado." })
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
   }
-
-  const normalizedEmail = normalizeEmail(email)
-  if (!normalizedEmail) {
-    return res.status(400).json({ error: "E-mail é obrigatório." })
-  }
-
-  const duplicateOnOtherUser = data.users.some(
-    (u) =>
-      u.id !== userId &&
-      (u.emails || []).some(
-        (item) => normalizeEmail(item.email) === normalizedEmail,
-      ),
-  )
-
-  if (duplicateOnOtherUser) {
-    return res
-      .status(409)
-      .json({ error: "Este e-mail já está em outro contato." })
-  }
-
-  const emailType = type === "principal" ? "principal" : "alternativo"
-
-  if (fromAvailable) {
-    const freeEmailIndex = data.availableEmails.findIndex(
-      (item) => normalizeEmail(item.email) === normalizedEmail,
-    )
-
-    if (freeEmailIndex === -1) {
-      return res
-        .status(404)
-        .json({ error: "E-mail não encontrado na lista de livres." })
-    }
-
-    data.availableEmails.splice(freeEmailIndex, 1)
-  }
-
-  if (emailType === "principal") {
-    user.emails = (user.emails || []).map((item) => ({
-      ...item,
-      type: "alternativo",
-    }))
-  }
-
-  user.emails = user.emails || []
-  user.emails.push({
-    email: normalizedEmail,
-    type: emailType,
-  })
-  user.emails = uniqueEmails(user.emails)
-
-  data.users = sortUsers(data.users)
-  data.availableEmails = sortAvailableEmails(uniqueEmails(data.availableEmails))
-
-  db.write(data)
-  res.json(user)
 }
 
 exports.assignPhone = (req, res) => {
-  const data = db.read()
-  const { userId, number, type, fromAvailable } = req.body
+  try {
+    const user = usersService.assignPhone({
+      userId: req.body.userId,
+      number: req.body.number,
+      type: req.body.type,
+      fromAvailable: req.body.fromAvailable,
+    })
 
-  const user = data.users.find((u) => u.id === userId)
-  if (!user) {
-    return res.status(404).json({ error: "Contato não encontrado." })
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
   }
-
-  const normalizedNumber = normalizePhone(number)
-  if (!normalizedNumber) {
-    return res.status(400).json({ error: "Número é obrigatório." })
-  }
-
-  const duplicateOnOtherUser = data.users.some(
-    (u) =>
-      u.id !== userId &&
-      (u.phones || []).some(
-        (item) => normalizePhone(item.number) === normalizedNumber,
-      ),
-  )
-
-  if (duplicateOnOtherUser) {
-    return res
-      .status(409)
-      .json({ error: "Este número já está em outro contato." })
-  }
-
-  const phoneType = type === "pessoal" ? "pessoal" : "dipedra"
-
-  if (fromAvailable) {
-    const freePhoneIndex = data.availablePhones.findIndex(
-      (item) => normalizePhone(item.number) === normalizedNumber,
-    )
-
-    if (freePhoneIndex === -1) {
-      return res
-        .status(404)
-        .json({ error: "Número não encontrado na lista de livres." })
-    }
-
-    data.availablePhones.splice(freePhoneIndex, 1)
-  }
-
-  user.phones = user.phones || []
-  user.phones.push({
-    number: normalizedNumber,
-    type: phoneType,
-  })
-  user.phones = uniquePhones(user.phones)
-
-  data.users = sortUsers(data.users)
-  data.availablePhones = sortAvailablePhones(uniquePhones(data.availablePhones))
-
-  db.write(data)
-  res.json(user)
 }
 
 exports.removeEmail = (req, res) => {
-  const data = db.read()
-  const { userId, email } = req.body
+  try {
+    const user = usersService.removeEmail({
+      userId: req.body.userId,
+      email: req.body.email,
+    })
 
-  const user = data.users.find((u) => u.id === userId)
-  if (!user) {
-    return res.status(404).json({ error: "Contato não encontrado." })
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
   }
-
-  const normalizedEmail = normalizeEmail(email)
-  const found = (user.emails || []).find(
-    (item) => normalizeEmail(item.email) === normalizedEmail,
-  )
-
-  if (!found) {
-    return res.status(404).json({ error: "E-mail não encontrado no contato." })
-  }
-
-  user.emails = (user.emails || []).filter(
-    (item) => normalizeEmail(item.email) !== normalizedEmail,
-  )
-
-  if (found.type !== "pessoal") {
-    data.availableEmails.push({ email: normalizedEmail })
-    data.availableEmails = sortAvailableEmails(
-      uniqueEmails(data.availableEmails),
-    )
-  }
-
-  db.write(data)
-  res.json(user)
 }
 
 exports.removePhone = (req, res) => {
-  const data = db.read()
-  const { userId, number } = req.body
+  try {
+    const user = usersService.removePhone({
+      userId: req.body.userId,
+      number: req.body.number,
+    })
 
-  const user = data.users.find((u) => u.id === userId)
-  if (!user) {
-    return res.status(404).json({ error: "Contato não encontrado." })
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
   }
-
-  const normalizedNumber = normalizePhone(number)
-  const found = (user.phones || []).find(
-    (item) => normalizePhone(item.number) === normalizedNumber,
-  )
-
-  if (!found) {
-    return res.status(404).json({ error: "Número não encontrado no contato." })
-  }
-
-  user.phones = (user.phones || []).filter(
-    (item) => normalizePhone(item.number) !== normalizedNumber,
-  )
-
-  if (found.type !== "pessoal") {
-    data.availablePhones.push({ number: normalizedNumber })
-    data.availablePhones = sortAvailablePhones(
-      uniquePhones(data.availablePhones),
-    )
-  }
-
-  db.write(data)
-  res.json(user)
 }
 
 exports.deleteAvailableEmail = (req, res) => {
-  const data = db.read()
-  const email = normalizeEmail(req.body.email)
+  try {
+    usersService.deleteAvailableEmail({
+      email: req.body.email,
+    })
 
-  data.availableEmails = (data.availableEmails || []).filter(
-    (item) => normalizeEmail(item.email) !== email,
-  )
-
-  db.write(data)
-  res.sendStatus(204)
+    res.sendStatus(204)
+  } catch (error) {
+    handleError(res, error)
+  }
 }
 
 exports.deleteAvailablePhone = (req, res) => {
-  const data = db.read()
-  const number = normalizePhone(req.body.number)
+  try {
+    usersService.deleteAvailablePhone({
+      number: req.body.number,
+    })
 
-  data.availablePhones = (data.availablePhones || []).filter(
-    (item) => normalizePhone(item.number) !== number,
-  )
+    res.sendStatus(204)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
 
-  db.write(data)
-  res.sendStatus(204)
+exports.inactivateUser = (req, res) => {
+  try {
+    const user = usersService.inactivateUser({
+      id: req.params.id,
+    })
+
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.reactivateUser = (req, res) => {
+  try {
+    const user = usersService.reactivateUser({
+      id: req.params.id,
+    })
+
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getHistory = (req, res) => {
+  try {
+    const history = usersService.getHistory({
+      entityType: req.query.entityType,
+      entityValue: req.query.entityValue,
+      limit: req.query.limit,
+    })
+
+    res.json(history)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getEmailHistory = (req, res) => {
+  try {
+    const history = usersService.getEmailHistory({
+      email: req.params.email,
+      limit: req.query.limit,
+    })
+
+    res.json(history)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getPhoneHistory = (req, res) => {
+  try {
+    const history = usersService.getPhoneHistory({
+      number: req.params.number,
+      limit: req.query.limit,
+    })
+
+    res.json(history)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getAliasHistory = (req, res) => {
+  try {
+    const history = usersService.getAliasHistory({
+      email: req.params.email,
+      limit: req.query.limit,
+    })
+
+    res.json(history)
+  } catch (error) {
+    handleError(res, error)
+  }
 }

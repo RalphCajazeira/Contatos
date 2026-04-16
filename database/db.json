@@ -3,6 +3,8 @@
     {
       "id": "0fa32ff5-fb3a-461f-9346-83a44c6bb166",
       "name": "Andre Soledade",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "andresoledade@dipedra.com",
@@ -19,6 +21,8 @@
     {
       "id": "21a361c0-1e79-484e-ace5-05f72ebb4fd4",
       "name": "Caroline Campos",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "financeiro1@dipedra.com",
@@ -35,6 +39,8 @@
     {
       "id": "102ddc02-eae2-450e-88ae-531f6b0be871",
       "name": "Cassia Cazaes",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "projetos01@dipedra.com",
@@ -51,6 +57,8 @@
     {
       "id": "1e1f1179-911e-489a-9403-1c569927eafb",
       "name": "Cleriston Rios",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "gerente.adm@dipedra.com",
@@ -71,6 +79,8 @@
     {
       "id": "9f13e904-ecb8-4481-96c9-ac45934c0caf",
       "name": "Danilo Costa",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "comercial07@dipedra.com",
@@ -82,6 +92,8 @@
     {
       "id": "22e1da03-8bc1-4b84-8376-492ca417e838",
       "name": "Davi Silva",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "almoxarifado@dipedra.com",
@@ -98,6 +110,8 @@
     {
       "id": "0e25a8eb-baa3-45c1-861e-f70e2627fdb0",
       "name": "Débora Ribeiro",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "comercial06@dipedra.com",
@@ -114,6 +128,8 @@
     {
       "id": "962e3d61-5769-420e-baff-65e4b51d3929",
       "name": "Érico Santos",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "tecnico01@dipedra.com",
@@ -130,6 +146,8 @@
     {
       "id": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
       "name": "Francisca Cruz",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "franciscacruz@dipedra.com",
@@ -150,6 +168,8 @@
     {
       "id": "8894d896-eb7e-4136-9981-55f1c4a10e60",
       "name": "Helder Souza",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "logistica@dipedra.com",
@@ -166,6 +186,8 @@
     {
       "id": "33826c28-03a4-48a1-85e0-ba45718089de",
       "name": "Ionilda (Mãe Marcos)",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [],
       "phones": [
         {
@@ -177,6 +199,8 @@
     {
       "id": "7f737f4b-143b-47f7-b478-c31338ef232b",
       "name": "Jorge Penna",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "jorgepenna@dipedra.com",
@@ -193,6 +217,8 @@
     {
       "id": "533cc8eb-2273-43f0-9fda-b225d201faa7",
       "name": "José Gabriel Tenório",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "comercial08@dipedra.com",
@@ -209,6 +235,8 @@
     {
       "id": "0507027b-c1af-4826-bc6a-0ef4b8f866ce",
       "name": "Kailane Marques",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "comercial10@dipedra.com",
@@ -225,6 +253,8 @@
     {
       "id": "41a53e9e-2716-47a1-a9ae-bead2f7cf9f7",
       "name": "Kailon Carregosa",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "pcp@dipedra.com",
@@ -236,6 +266,8 @@
     {
       "id": "334a7992-7331-436a-8735-02995a0b463c",
       "name": "Kaique Tosta",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "gerente.producao@dipedra.com",
@@ -252,6 +284,8 @@
     {
       "id": "fea35aba-59d3-4320-9f72-e8c536533686",
       "name": "Laissa Mattos",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "gerente.loja@dipedra.com",
@@ -268,6 +302,8 @@
     {
       "id": "40532b33-3e5d-4051-8832-3f161c73e2cc",
       "name": "Leandro Amaral",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "comercial04@dipedra.com",
@@ -284,6 +320,8 @@
     {
       "id": "b7e870eb-3f54-4aed-b1f4-67a4e94aae2d",
       "name": "Lennon Reis",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "pcp01@dipedra.com",
@@ -295,6 +333,8 @@
     {
       "id": "b679ebf7-45aa-4567-b24d-9f5e4b630edf",
       "name": "Marcos (SW4)",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [],
       "phones": [
         {
@@ -306,6 +346,8 @@
     {
       "id": "a3391ef5-202d-4676-acc6-61b181c7aac2",
       "name": "Marcos Oliveira",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "marcos@dipedra.com",
@@ -322,6 +364,8 @@
     {
       "id": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
       "name": "Patricia Alves",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "sac@dipedra.com",
@@ -338,6 +382,8 @@
     {
       "id": "b9011537-0208-48dc-ac99-1d62d698242d",
       "name": "Patrícia Anastácio",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "patricia@dipedra.com",
@@ -354,6 +400,8 @@
     {
       "id": "32126a94-dbc0-4cec-a00f-3317e5c3de2e",
       "name": "Pedro Oliveira",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "comercial05@dipedra.com",
@@ -374,6 +422,8 @@
     {
       "id": "0e4bfb6a-90d0-424e-adc9-a04fa4c0832d",
       "name": "Ralph Ramos",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "dev@dipedra.com",
@@ -390,6 +440,8 @@
     {
       "id": "ecbccd50-eb65-4eb5-9487-86e41db59dd6",
       "name": "Rebeca Freitas",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "comercial03@dipedra.com",
@@ -406,6 +458,8 @@
     {
       "id": "f23f17a6-2864-400b-a775-8ba940f064fd",
       "name": "Romario Romero",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "romario.romero@dipedra.com",
@@ -422,6 +476,8 @@
     {
       "id": "78cfa935-4a6d-4a14-86c9-0bcf40afca36",
       "name": "Tiago Giffoni",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "tiago@dipedra.com",
@@ -438,6 +494,8 @@
     {
       "id": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
       "name": "Wallace Araujo",
+      "active": true,
+      "inactivatedAt": null,
       "emails": [
         {
           "email": "comercial02@dipedra.com",
@@ -455,10 +513,19 @@
   "availableEmails": [],
   "availablePhones": [
     {
-      "number": "71999001163"
+      "number": "71999001163",
+      "type": "dipedra",
+      "lastUserId": null,
+      "lastUserName": null,
+      "releasedAt": null
     },
     {
-      "number": "71999551699"
+      "number": "71999551699",
+      "type": "dipedra",
+      "lastUserId": null,
+      "lastUserName": null,
+      "releasedAt": null
     }
-  ]
+  ],
+  "history": []
 }
