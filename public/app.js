@@ -1,3 +1,4 @@
+import { bindExportEvents } from "./js/export.js"
 import { bindModalEvents } from "./js/modal.js"
 import {
   load,
@@ -37,6 +38,7 @@ const btnAddFreeEmail = document.getElementById("btnAddFreeEmail")
 const btnAddFreePhone = document.getElementById("btnAddFreePhone")
 
 bindModalEvents()
+bindExportEvents()
 
 btnAddContact.addEventListener("click", createContactAction)
 btnAddFreeEmail.addEventListener("click", addAvailableEmailAction)
