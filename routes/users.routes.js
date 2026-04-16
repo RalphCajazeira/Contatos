@@ -3,6 +3,11 @@ const controller = require("../controllers/users.controller")
 
 router.get("/", controller.getAll)
 
+router.get("/contacts/active", controller.getActiveUsers)
+router.get("/contacts/inactive", controller.getInactiveUsers)
+router.get("/contact/:id", controller.getUserById)
+router.get("/summary", controller.getSummary)
+
 router.get("/history", controller.getHistory)
 router.get("/history/email/:email", controller.getEmailHistory)
 router.get("/history/phone/:number", controller.getPhoneHistory)
@@ -22,6 +27,8 @@ router.delete("/available-phone", controller.deleteAvailablePhone)
 
 router.post("/assign-email", controller.assignEmail)
 router.post("/assign-phone", controller.assignPhone)
+router.post("/transfer-email", controller.transferEmail)
+router.post("/transfer-phone", controller.transferPhone)
 
 router.post("/remove-email", controller.removeEmail)
 router.post("/remove-phone", controller.removePhone)

@@ -233,3 +233,72 @@ exports.getAliasHistory = (req, res) => {
     handleError(res, error)
   }
 }
+
+exports.transferEmail = (req, res) => {
+  try {
+    const result = usersService.transferEmail({
+      fromUserId: req.body.fromUserId,
+      toUserId: req.body.toUserId,
+      email: req.body.email,
+      targetType: req.body.targetType,
+    })
+
+    res.json(result)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.transferPhone = (req, res) => {
+  try {
+    const result = usersService.transferPhone({
+      fromUserId: req.body.fromUserId,
+      toUserId: req.body.toUserId,
+      number: req.body.number,
+      targetType: req.body.targetType,
+    })
+
+    res.json(result)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getActiveUsers = (req, res) => {
+  try {
+    const users = usersService.getActiveUsers()
+    res.json(users)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getInactiveUsers = (req, res) => {
+  try {
+    const users = usersService.getInactiveUsers()
+    res.json(users)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getUserById = (req, res) => {
+  try {
+    const user = usersService.getUserById({
+      id: req.params.id,
+    })
+
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getSummary = (req, res) => {
+  try {
+    const summary = usersService.getSummary()
+    res.json(summary)
+  } catch (error) {
+    handleError(res, error)
+  }
+}

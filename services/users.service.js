@@ -964,12 +964,262 @@ function getAliasHistory({ email, limit }) {
   return history
 }
 
+function transferEmail({ fromUserId, toUserId, email, targetType }) {
+  const data = readData()
+
+  const fromUser = data.users.find((u) => u.id === fromUserId)
+  const toUser = data.users.find((u) => u.id === toUserId)
+
+  if (!fromUser) {
+    const error = new Error("Contato de origem não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  if (!toUser) {
+    const error = new Error("Contato de destino não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  if (fromUser.id === toUser.id) {
+    const error = new Error("Origem e destino não podem ser o mesmo contato.")
+    error.status = 400
+    throw error
+  }
+
+  const normalizedEmail = normalizeEmail(email)
+
+  if (!normalizedEmail) {
+    const error = new Error("E-mail é obrigatório.")
+    error.status = 400
+    throw error
+  }
+
+  const found = (fromUser.emails || []).find(
+    (item) => normalizeEmail(item.email) === normalizedEmail,
+  )
+
+  if (!found) {
+    const error = new Error("E-mail não encontrado no contato de origem.")
+    error.status = 404
+    throw error
+  }
+
+  const duplicateOnDestination = (toUser.emails || []).some(
+    (item) => normalizeEmail(item.email) === normalizedEmail,
+  )
+
+  if (duplicateOnDestination) {
+    const error = new Error("Este e-mail já existe no contato de destino.")
+    error.status = 409
+    throw error
+  }
+
+  const finalType =
+    targetType === "principal"
+      ? "principal"
+      : targetType === "pessoal"
+        ? "pessoal"
+        : targetType === "alias"
+          ? "alias"
+          : found.type
+
+  fromUser.emails = (fromUser.emails || []).filter(
+    (item) => normalizeEmail(item.email) !== normalizedEmail,
+  )
+
+  if (finalType === "principal") {
+    toUser.emails = (toUser.emails || []).map((item) => ({
+      ...item,
+      type: item.type === "principal" ? "alternativo" : item.type,
+    }))
+  }
+
+  toUser.emails = toUser.emails || []
+  toUser.emails.push({
+    email: normalizedEmail,
+    type: finalType,
+  })
+  toUser.emails = uniqueEmails(toUser.emails)
+
+  addHistory(
+    data,
+    createHistoryEntry({
+      entityType: finalType === "alias" ? "alias" : "email",
+      entityValue: normalizedEmail,
+      action: "transferred",
+      fromUserId: fromUser.id,
+      fromUserName: fromUser.name,
+      toUserId: toUser.id,
+      toUserName: toUser.name,
+      metadata: {
+        previousType: found.type,
+        newType: finalType,
+      },
+    }),
+  )
+
+  persist(data)
+
+  return {
+    fromUser,
+    toUser,
+  }
+}
+
+function transferPhone({ fromUserId, toUserId, number, targetType }) {
+  const data = readData()
+
+  const fromUser = data.users.find((u) => u.id === fromUserId)
+  const toUser = data.users.find((u) => u.id === toUserId)
+
+  if (!fromUser) {
+    const error = new Error("Contato de origem não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  if (!toUser) {
+    const error = new Error("Contato de destino não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  if (fromUser.id === toUser.id) {
+    const error = new Error("Origem e destino não podem ser o mesmo contato.")
+    error.status = 400
+    throw error
+  }
+
+  const normalizedNumber = normalizePhone(number)
+
+  if (!normalizedNumber) {
+    const error = new Error("Número é obrigatório.")
+    error.status = 400
+    throw error
+  }
+
+  const found = (fromUser.phones || []).find(
+    (item) => normalizePhone(item.number) === normalizedNumber,
+  )
+
+  if (!found) {
+    const error = new Error("Número não encontrado no contato de origem.")
+    error.status = 404
+    throw error
+  }
+
+  const duplicateOnDestination = (toUser.phones || []).some(
+    (item) => normalizePhone(item.number) === normalizedNumber,
+  )
+
+  if (duplicateOnDestination) {
+    const error = new Error("Este número já existe no contato de destino.")
+    error.status = 409
+    throw error
+  }
+
+  const finalType = targetType === "pessoal" ? "pessoal" : "dipedra"
+
+  fromUser.phones = (fromUser.phones || []).filter(
+    (item) => normalizePhone(item.number) !== normalizedNumber,
+  )
+
+  toUser.phones = toUser.phones || []
+  toUser.phones.push({
+    number: normalizedNumber,
+    type: finalType,
+  })
+  toUser.phones = uniquePhones(toUser.phones)
+
+  addHistory(
+    data,
+    createHistoryEntry({
+      entityType: "phone",
+      entityValue: normalizedNumber,
+      action: "transferred",
+      fromUserId: fromUser.id,
+      fromUserName: fromUser.name,
+      toUserId: toUser.id,
+      toUserName: toUser.name,
+      metadata: {
+        previousType: found.type,
+        newType: finalType,
+      },
+    }),
+  )
+
+  persist(data)
+
+  return {
+    fromUser,
+    toUser,
+  }
+}
+
+function getActiveUsers() {
+  const data = readData()
+
+  return data.users.filter((user) => user.active !== false)
+}
+
+function getInactiveUsers() {
+  const data = readData()
+
+  return data.users.filter((user) => user.active === false)
+}
+
+function getUserById({ id }) {
+  const data = readData()
+  const user = data.users.find((u) => u.id === id)
+
+  if (!user) {
+    const error = new Error("Contato não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  return user
+}
+
+function getSummary() {
+  const data = readData()
+
+  const activeUsers = data.users.filter((u) => u.active !== false)
+  const inactiveUsers = data.users.filter((u) => u.active === false)
+
+  const totalEmailsInUse = data.users.reduce(
+    (sum, user) => sum + (user.emails || []).length,
+    0,
+  )
+
+  const totalPhonesInUse = data.users.reduce(
+    (sum, user) => sum + (user.phones || []).length,
+    0,
+  )
+
+  return {
+    totalUsers: data.users.length,
+    activeUsers: activeUsers.length,
+    inactiveUsers: inactiveUsers.length,
+    availableEmails: data.availableEmails.length,
+    availablePhones: data.availablePhones.length,
+    emailsInUse: totalEmailsInUse,
+    phonesInUse: totalPhonesInUse,
+  }
+}
+
 module.exports = {
   getAll,
   getHistory,
   getEmailHistory,
   getPhoneHistory,
   getAliasHistory,
+  getActiveUsers,
+  getInactiveUsers,
+  getUserById,
+  getSummary,
   addUser,
   updateUser,
   deleteUser,
@@ -979,6 +1229,8 @@ module.exports = {
   addAvailablePhone,
   assignEmail,
   assignPhone,
+  transferEmail,
+  transferPhone,
   removeEmail,
   removePhone,
   deleteAvailableEmail,
