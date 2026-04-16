@@ -1538,6 +1538,100 @@ function restoreDeletedAlias({ aliasId }) {
   return user
 }
 
+function renameAvailableEmail({ oldEmail, newEmail }) {
+  const data = readData()
+
+  const normalizedOldEmail = normalizeEmail(oldEmail)
+  const normalizedNewEmail = normalizeEmail(newEmail)
+
+  if (!normalizedOldEmail || !normalizedNewEmail) {
+    const error = new Error("E-mail antigo e novo e-mail são obrigatórios.")
+    error.status = 400
+    throw error
+  }
+
+  const emailEntry = (data.availableEmails || []).find(
+    (item) => normalizeEmail(item.email) === normalizedOldEmail,
+  )
+
+  if (!emailEntry) {
+    const error = new Error("E-mail livre não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  const emailAlreadyInUse = data.users.some((u) =>
+    (u.emails || []).some(
+      (item) => normalizeEmail(item.email) === normalizedNewEmail,
+    ),
+  )
+
+  const aliasAlreadyInUse = data.users.some((u) =>
+    (u.emails || []).some((item) =>
+      (item.aliases || []).some(
+        (alias) =>
+          alias.active !== false &&
+          normalizeEmail(alias.email) === normalizedNewEmail,
+      ),
+    ),
+  )
+
+  const availableAlreadyInUse = (data.availableEmails || []).some(
+    (item) =>
+      normalizeEmail(item.email) === normalizedNewEmail &&
+      normalizeEmail(item.email) !== normalizedOldEmail,
+  )
+
+  if (emailAlreadyInUse || aliasAlreadyInUse || availableAlreadyInUse) {
+    const error = new Error("O novo e-mail já está em uso no sistema.")
+    error.status = 409
+    throw error
+  }
+
+  emailEntry.aliases = Array.isArray(emailEntry.aliases)
+    ? emailEntry.aliases
+    : []
+
+  emailEntry.aliases.push({
+    id: crypto.randomUUID(),
+    email: normalizedOldEmail,
+    createdAt: nowIso(),
+    deletedAt: null,
+    active: true,
+  })
+
+  emailEntry.email = normalizedNewEmail
+
+  addHistory(
+    data,
+    createHistoryEntry({
+      entityType: "email",
+      entityValue: normalizedNewEmail,
+      action: "renamed_available",
+      metadata: {
+        oldEmail: normalizedOldEmail,
+        newEmail: normalizedNewEmail,
+      },
+    }),
+  )
+
+  addHistory(
+    data,
+    createHistoryEntry({
+      entityType: "alias",
+      entityValue: normalizedOldEmail,
+      action: "created_from_available_rename",
+      metadata: {
+        principalEmail: normalizedNewEmail,
+      },
+    }),
+  )
+
+  persist(data)
+
+  return emailEntry
+}
+
 module.exports = {
   getAll,
   getHistory,
@@ -1568,4 +1662,5 @@ module.exports = {
   getAliasesByPrincipal,
   getDeletedResources,
   restoreDeletedAlias,
+  renameAvailableEmail,
 }

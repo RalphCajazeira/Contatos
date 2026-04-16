@@ -170,26 +170,14 @@
     {
       "id": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
       "name": "Francisca Cruz",
-      "active": true,
-      "inactivatedAt": null,
-      "emails": [
-        {
-          "id": "9fe2deab-fce9-4750-bbf4-45d2da743a36",
-          "email": "franciscacruz@dipedra.com",
-          "type": "principal",
-          "aliases": []
-        }
-      ],
+      "active": false,
+      "inactivatedAt": "2026-04-16T20:48:29.878Z",
+      "emails": [],
       "phones": [
         {
           "id": "3b51e6c9-0434-4e43-8879-729c9ee7d879",
           "number": "71991431312",
           "type": "pessoal"
-        },
-        {
-          "id": "726fcbbc-67c0-426f-b380-5ef2dfd9baa5",
-          "number": "71999411203",
-          "type": "dipedra"
         }
       ]
     },
@@ -593,7 +581,15 @@
       ]
     }
   ],
-  "availableEmails": [],
+  "availableEmails": [
+    {
+      "email": "financeiro2@dipedra.com",
+      "type": "principal",
+      "lastUserId": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
+      "lastUserName": "Francisca Cruz",
+      "releasedAt": "2026-04-16T20:48:29.877Z"
+    }
+  ],
   "availablePhones": [
     {
       "number": "71999001163",
@@ -603,6 +599,13 @@
       "releasedAt": null
     },
     {
+      "number": "71999411203",
+      "type": "dipedra",
+      "lastUserId": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
+      "lastUserName": "Francisca Cruz",
+      "releasedAt": "2026-04-16T20:48:29.878Z"
+    },
+    {
       "number": "71999551699",
       "type": "dipedra",
       "lastUserId": null,
@@ -610,7 +613,73 @@
       "releasedAt": null
     }
   ],
-  "history": [],
+  "history": [
+    {
+      "id": "b88e3b65-c30a-439f-bafe-d2f74343a291",
+      "entityType": "alias",
+      "entityValue": "franciscacruz@dipedra.com",
+      "action": "created_from_available_rename",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-16T20:48:41.447Z",
+      "metadata": {
+        "principalEmail": "financeiro2@dipedra.com"
+      }
+    },
+    {
+      "id": "8fa12f41-e183-446a-a52a-921282ea8d01",
+      "entityType": "email",
+      "entityValue": "financeiro2@dipedra.com",
+      "action": "renamed_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-16T20:48:41.447Z",
+      "metadata": {
+        "oldEmail": "franciscacruz@dipedra.com",
+        "newEmail": "financeiro2@dipedra.com"
+      }
+    },
+    {
+      "id": "a9f95ff2-9c9e-4a6d-b0b6-a57c08a25407",
+      "entityType": "contact",
+      "entityValue": "Francisca Cruz",
+      "action": "inactivated",
+      "fromUserId": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
+      "fromUserName": "Francisca Cruz",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-16T20:48:29.878Z",
+      "metadata": {}
+    },
+    {
+      "id": "d1378e71-2ebf-4e2e-8c5a-6778c55c932a",
+      "entityType": "phone",
+      "entityValue": "71999411203",
+      "action": "released_on_inactivate",
+      "fromUserId": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
+      "fromUserName": "Francisca Cruz",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-16T20:48:29.878Z",
+      "metadata": {}
+    },
+    {
+      "id": "e124cfd9-2a89-478c-9938-23ad347529d0",
+      "entityType": "email",
+      "entityValue": "franciscacruz@dipedra.com",
+      "action": "released_on_inactivate",
+      "fromUserId": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
+      "fromUserName": "Francisca Cruz",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-16T20:48:29.878Z",
+      "metadata": {}
+    }
+  ],
   "deletedEmails": [],
   "deletedPhones": [],
   "deletedAliases": []

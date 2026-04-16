@@ -339,10 +339,11 @@ export async function reactivateContactAction(userId) {
 function getReadableHistoryAction(item) {
   const actionMap = {
     created: "Contato criado",
-    renamed: "Renomeado",
-    created_as_available: "Criado como recurso livre",
+    renamed: "E-mail renomeado",
+    renamed_available: "E-mail renomeado",
+    created_as_available: "Criado como e-mail livre",
     assigned: "Atribuído ao contato",
-    assigned_from_available: "Atribuído a partir da lista de livres",
+    assigned_from_available: "Atribuído da lista de livres",
     removed: "Removido do contato",
     deleted: "Excluído",
     deleted_from_available: "Excluído da lista de livres",
@@ -352,7 +353,8 @@ function getReadableHistoryAction(item) {
     released_on_delete: "Liberado ao excluir o contato",
     inactivated: "Contato inativado",
     reactivated: "Contato reativado",
-    created_from_rename: "Alias criado ao renomear o e-mail",
+    created_from_rename: "Alias criado ao renomear",
+    created_from_available_rename: "Alias criado automaticamente ao renomear",
   }
 
   return actionMap[item.action] || item.action || "Ação registrada"
@@ -361,7 +363,7 @@ function getReadableHistoryAction(item) {
 function getReadableEntityType(item) {
   const map = {
     email: "E-mail",
-    alias: "Alias",
+    alias: "Alias (e-mail secundário)",
     phone: "Número",
     contact: "Contato",
   }
@@ -375,7 +377,8 @@ function renderHistoryDetails(item) {
 
   if (metadata.oldEmail && metadata.newEmail) {
     details.push(
-      `<div class="resource-meta">Alteração: ${escapeHtml(metadata.oldEmail)} → ${escapeHtml(metadata.newEmail)}</div>`,
+      `<div class="resource-meta"><strong>De:</strong> ${escapeHtml(metadata.oldEmail)}</div>
+   <div class="resource-meta"><strong>Para:</strong> ${escapeHtml(metadata.newEmail)}</div>`,
     )
   }
 

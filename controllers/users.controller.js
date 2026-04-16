@@ -364,3 +364,16 @@ exports.restoreDeletedAlias = (req, res) => {
     handleError(res, error)
   }
 }
+
+exports.renameAvailableEmail = (req, res) => {
+  try {
+    const result = usersService.renameAvailableEmail({
+      oldEmail: req.body.oldEmail,
+      newEmail: req.body.newEmail,
+    })
+
+    res.json(result)
+  } catch (error) {
+    handleError(res, error)
+  }
+}

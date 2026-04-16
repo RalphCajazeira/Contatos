@@ -37,6 +37,7 @@ router.get("/deleted", controller.getDeletedResources)
 router.get("/aliases", controller.getAliasesByPrincipal)
 
 router.post("/rename-primary-email", controller.renamePrimaryEmail)
+router.post("/rename-available-email", controller.renameAvailableEmail)
 router.post("/delete-alias", controller.deleteAlias)
 router.post("/restore-deleted-alias", controller.restoreDeletedAlias)
 
