@@ -59,6 +59,8 @@ function renderEmails(emails) {
         <div class="resource-actions">
           <button class="small-btn" onclick="openAssignEmailFromAvailable('${item.email}')">Atribuir</button>
           <button class="small-btn" onclick="openEmailHistory('${item.email}', '${item.type || "principal"}')">Histórico</button>
+          <button class="small-btn" onclick="openRenameFreeEmailModal('${item.email}')">Renomear</button>
+          <button class="small-btn" onclick="openFreeEmailAliasesModal('${item.email}')">Aliases</button>
           <button class="small-btn danger" onclick="deleteAvailableEmailAction('${item.email}')">Excluir</button>
         </div>
       </div>

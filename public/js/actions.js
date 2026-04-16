@@ -21,6 +21,7 @@ import {
   fetchHistoryByAlias,
   fetchHistoryByPhone,
   renamePrimaryEmail,
+  renameAvailableEmail,
   fetchAliases,
   deleteAlias,
   fetchDeletedResources,
@@ -335,6 +336,64 @@ export async function reactivateContactAction(userId) {
   await load()
 }
 
+function getReadableHistoryAction(item) {
+  const actionMap = {
+    created: "Contato criado",
+    renamed: "Renomeado",
+    created_as_available: "Criado como recurso livre",
+    assigned: "Atribuído ao contato",
+    assigned_from_available: "Atribuído a partir da lista de livres",
+    removed: "Removido do contato",
+    deleted: "Excluído",
+    deleted_from_available: "Excluído da lista de livres",
+    restored: "Restaurado",
+    transferred: "Transferido entre contatos",
+    released_on_inactivate: "Liberado ao inativar o contato",
+    released_on_delete: "Liberado ao excluir o contato",
+    inactivated: "Contato inativado",
+    reactivated: "Contato reativado",
+    created_from_rename: "Alias criado ao renomear o e-mail",
+  }
+
+  return actionMap[item.action] || item.action || "Ação registrada"
+}
+
+function getReadableEntityType(item) {
+  const map = {
+    email: "E-mail",
+    alias: "Alias",
+    phone: "Número",
+    contact: "Contato",
+  }
+
+  return map[item.entityType] || item.entityType || "-"
+}
+
+function renderHistoryDetails(item) {
+  const metadata = item.metadata || {}
+  const details = []
+
+  if (metadata.oldEmail && metadata.newEmail) {
+    details.push(
+      `<div class="resource-meta">Alteração: ${escapeHtml(metadata.oldEmail)} → ${escapeHtml(metadata.newEmail)}</div>`,
+    )
+  }
+
+  if (metadata.principalEmail) {
+    details.push(
+      `<div class="resource-meta">E-mail principal: ${escapeHtml(metadata.principalEmail)}</div>`,
+    )
+  }
+
+  if (metadata.previousType || metadata.newType) {
+    details.push(
+      `<div class="resource-meta">Tipo: ${escapeHtml(metadata.previousType || "-")} → ${escapeHtml(metadata.newType || "-")}</div>`,
+    )
+  }
+
+  return details.join("")
+}
+
 function renderHistoryHtml(history) {
   if (!history.length) {
     return `<div class="empty">Nenhum histórico encontrado.</div>`
@@ -347,12 +406,13 @@ function renderHistoryHtml(history) {
           (item) => `
         <div class="resource-card">
           <div class="resource-text">
-            <div><strong>${escapeHtml(item.action)}</strong></div>
-            <div class="resource-meta">Tipo: ${escapeHtml(item.entityType || "-")}</div>
+            <div><strong>${escapeHtml(getReadableHistoryAction(item))}</strong></div>
+            <div class="resource-meta">Tipo: ${escapeHtml(getReadableEntityType(item))}</div>
             <div class="resource-meta">Valor: ${escapeHtml(item.entityValue || "-")}</div>
             <div class="resource-meta">Data: ${escapeHtml(new Date(item.changedAt).toLocaleString("pt-BR"))}</div>
             <div class="resource-meta">De: ${escapeHtml(item.fromUserName || "-")}</div>
             <div class="resource-meta">Para: ${escapeHtml(item.toUserName || "-")}</div>
+            ${renderHistoryDetails(item)}
           </div>
         </div>
       `,
@@ -462,21 +522,10 @@ export async function openGlobalHistory() {
 }
 
 export function openRenamePrimaryEmailModal(userId, oldEmail) {
-  openModal(
-    "Renomear e-mail principal",
-    [
-      {
-        name: "oldEmail",
-        label: "E-mail atual",
-        value: oldEmail,
-      },
-      {
-        name: "newEmail",
-        label: "Novo e-mail principal",
-        placeholder: "financeiro2@dipedra.com",
-      },
-    ],
-    async (values) => {
+  openRenameEmailModal({
+    title: "Renomear e-mail principal",
+    oldEmail,
+    onSubmit: async (values) => {
       await renamePrimaryEmail({
         userId,
         oldEmail: values.oldEmail,
@@ -484,7 +533,7 @@ export function openRenamePrimaryEmailModal(userId, oldEmail) {
       })
       await load()
     },
-  )
+  })
 }
 
 export async function openAliasesModal(userId, principalEmail) {
@@ -633,4 +682,58 @@ export async function restoreDeletedAliasAction(aliasId) {
   await restoreDeletedAlias({ aliasId })
   await load()
   await openDeletedResourcesModal()
+}
+
+export function openRenameFreeEmailModal(email) {
+  openRenameEmailModal({
+    title: "Renomear e-mail livre",
+    oldEmail: email,
+    onSubmit: async (values) => {
+      await renameAvailableEmail({
+        oldEmail: values.oldEmail,
+        newEmail: values.newEmail,
+      })
+      await load()
+    },
+  })
+}
+
+export function openFreeEmailAliasesModal(email) {
+  openHtmlModal(
+    `Aliases de ${email}`,
+    `
+      <div class="resource-card">
+        <div class="resource-text">
+          <div><strong>${escapeHtml(email)}</strong></div>
+          <div class="resource-meta">
+            No modelo atual, os aliases vinculados são exibidos a partir do e-mail
+            principal dentro do contato.
+          </div>
+          <div class="resource-meta" style="margin-top: 10px;">
+            Depois que esse e-mail estiver atribuído a um contato, use o botão
+            “Ver aliases” no card do e-mail principal.
+          </div>
+        </div>
+      </div>
+    `,
+  )
+}
+
+function openRenameEmailModal({ title, oldEmail, onSubmit }) {
+  openModal(
+    title,
+    [
+      {
+        name: "oldEmail",
+        label: "E-mail atual",
+        value: oldEmail,
+      },
+      {
+        name: "newEmail",
+        label: "Novo e-mail principal",
+        placeholder: "financeiro2@dipedra.com",
+      },
+    ],
+    onSubmit,
+  )
 }

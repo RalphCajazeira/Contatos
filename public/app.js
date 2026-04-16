@@ -26,6 +26,8 @@ import {
   openEmailHistory,
   openPhoneHistory,
   openGlobalHistory,
+  openRenameFreeEmailModal,
+  openFreeEmailAliasesModal,
 } from "./js/actions.js"
 import { render } from "./js/render.js"
 
@@ -64,5 +66,7 @@ window.openAliasesModal = openAliasesModal
 window.deleteAliasAction = deleteAliasAction
 window.openDeletedResourcesModal = openDeletedResourcesModal
 window.restoreDeletedAliasAction = restoreDeletedAliasAction
+window.openRenameFreeEmailModal = openRenameFreeEmailModal
+window.openFreeEmailAliasesModal = openFreeEmailAliasesModal
 
 load()

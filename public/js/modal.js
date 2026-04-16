@@ -71,12 +71,22 @@ export function openHtmlModal(title, html) {
   modalFields.innerHTML = html
   modalSubmit = null
   modalOverlay.classList.remove("hidden")
+
+  const actions = modalForm.querySelector(".modal-actions")
+  if (actions) {
+    actions.style.display = "none"
+  }
 }
 
 export function closeModal() {
   modalOverlay.classList.add("hidden")
   modalFields.innerHTML = ""
   modalSubmit = null
+
+  const actions = modalForm.querySelector(".modal-actions")
+  if (actions) {
+    actions.style.display = ""
+  }
 }
 
 export function bindModalEvents() {
