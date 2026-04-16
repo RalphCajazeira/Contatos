@@ -320,17 +320,6 @@
       ]
     },
     {
-      "id": "e39672e1-3cb9-47aa-a817-3b4c8ec3e031",
-      "name": "Mingo",
-      "emails": [],
-      "phones": [
-        {
-          "number": "71996282288",
-          "type": "dipedra"
-        }
-      ]
-    },
-    {
       "id": "33826c28-03a4-48a1-85e0-ba45718089de",
       "name": "Nilda",
       "emails": [],
@@ -342,8 +331,24 @@
       ]
     },
     {
+      "id": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
+      "name": "Patricia Alves",
+      "emails": [
+        {
+          "email": "sac@dipedra.com",
+          "type": "principal"
+        }
+      ],
+      "phones": [
+        {
+          "number": "71996282288",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
       "id": "b9011537-0208-48dc-ac99-1d62d698242d",
-      "name": "Patricia Dipedra",
+      "name": "Patrícia Anastácio",
       "emails": [
         {
           "email": "patricia@dipedra.com",

@@ -621,53 +621,161 @@ btnAddFreePhone.addEventListener("click", () => {
 
 search.addEventListener("input", render)
 
-btnExport.addEventListener("click", () => {
-  const contatos = [...state.users]
-    .sort((a, b) =>
-      a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" }),
-    )
-    .map((user) => ({
-      Nome: user.name,
-      Emails: (user.emails || [])
-        .map((item) => `${item.email}${item.type ? ` (${item.type})` : ""}`)
-        .join("\n"),
-      Telefones: (user.phones || [])
-        .map(
-          (item) =>
-            `${formatBR(item.number)}${item.type ? ` (${item.type})` : ""}`,
-        )
-        .join("\n"),
-    }))
+btnExport.addEventListener("click", async () => {
+  try {
+    const workbook = new ExcelJS.Workbook()
 
-  const emailsLivres = [...(state.availableEmails || [])]
-    .sort((a, b) =>
-      a.email.localeCompare(b.email, "pt-BR", { sensitivity: "base" }),
-    )
-    .map((item) => ({
-      "E-mail Livre": item.email,
-    }))
+    const contatosSheet = workbook.addWorksheet("Contatos", {
+      views: [{ state: "frozen", ySplit: 1 }],
+    })
 
-  const numerosLivres = [...(state.availablePhones || [])]
-    .sort((a, b) => digits(a.number).localeCompare(digits(b.number), "pt-BR"))
-    .map((item) => ({
-      "Número Livre": formatBR(item.number),
-    }))
+    const emailsSheet = workbook.addWorksheet("Emails Livres", {
+      views: [{ state: "frozen", ySplit: 1 }],
+    })
 
-  const wb = XLSX.utils.book_new()
+    const numerosSheet = workbook.addWorksheet("Numeros Livres", {
+      views: [{ state: "frozen", ySplit: 1 }],
+    })
 
-  const wsContatos = XLSX.utils.json_to_sheet(contatos)
-  const wsEmails = XLSX.utils.json_to_sheet(emailsLivres)
-  const wsNumeros = XLSX.utils.json_to_sheet(numerosLivres)
+    contatosSheet.columns = [
+      { header: "Nome", key: "nome", width: 30 },
+      { header: "E-mail Principal", key: "emailPrincipal", width: 32 },
+      {
+        header: "E-mail Alternativo (Alias Google)",
+        key: "emailAlternativo",
+        width: 32,
+      },
+      { header: "Telefone Dipedra", key: "telefoneDipedra", width: 20 },
+      { header: "Telefone Pessoal", key: "telefonePessoal", width: 20 },
+      { header: "E-mail Pessoal", key: "emailPessoal", width: 32 },
+    ]
 
-  wsContatos["!cols"] = [{ wch: 30 }, { wch: 50 }, { wch: 35 }]
-  wsEmails["!cols"] = [{ wch: 35 }]
-  wsNumeros["!cols"] = [{ wch: 20 }]
+    emailsSheet.columns = [
+      { header: "E-mail Livre", key: "emailLivre", width: 35 },
+    ]
 
-  XLSX.utils.book_append_sheet(wb, wsContatos, "Contatos")
-  XLSX.utils.book_append_sheet(wb, wsEmails, "Emails Livres")
-  XLSX.utils.book_append_sheet(wb, wsNumeros, "Numeros Livres")
+    numerosSheet.columns = [
+      { header: "Número Livre", key: "numeroLivre", width: 20 },
+    ]
 
-  XLSX.writeFile(wb, "gestor_contatos.xlsx")
+    const contatos = [...state.users]
+      .sort((a, b) =>
+        a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" }),
+      )
+      .map((user) => ({
+        nome: user.name,
+
+        emailPrincipal: (user.emails || [])
+          .filter((item) => item.type === "principal")
+          .map((item) => item.email)
+          .join("\n"),
+
+        emailAlternativo: (user.emails || [])
+          .filter((item) => item.type === "alternativo")
+          .map((item) => item.email)
+          .join("\n"),
+
+        telefoneDipedra: (user.phones || [])
+          .filter((item) => item.type === "dipedra")
+          .map((item) => formatBR(item.number))
+          .join("\n"),
+
+        telefonePessoal: (user.phones || [])
+          .filter((item) => item.type === "pessoal")
+          .map((item) => formatBR(item.number))
+          .join("\n"),
+
+        emailPessoal: (user.emails || [])
+          .filter((item) => item.type === "pessoal")
+          .map((item) => item.email)
+          .join("\n"),
+      }))
+
+    const emailsLivres = [...(state.availableEmails || [])]
+      .sort((a, b) =>
+        a.email.localeCompare(b.email, "pt-BR", { sensitivity: "base" }),
+      )
+      .map((item) => ({
+        emailLivre: item.email,
+      }))
+
+    const numerosLivres = [...(state.availablePhones || [])]
+      .sort((a, b) => digits(a.number).localeCompare(digits(b.number), "pt-BR"))
+      .map((item) => ({
+        numeroLivre: formatBR(item.number),
+      }))
+
+    contatos.forEach((item) => contatosSheet.addRow(item))
+    emailsLivres.forEach((item) => emailsSheet.addRow(item))
+    numerosLivres.forEach((item) => numerosSheet.addRow(item))
+
+    function styleSheet(sheet, lastColumnLetter) {
+      const header = sheet.getRow(1)
+
+      header.font = { bold: true, color: { argb: "FFFFFFFF" } }
+      header.fill = {
+        type: "pattern",
+        pattern: "solid",
+        fgColor: { argb: "1F4E78" },
+      }
+      header.alignment = {
+        vertical: "middle",
+        horizontal: "center",
+        wrapText: true,
+      }
+
+      sheet.autoFilter = {
+        from: "A1",
+        to: `${lastColumnLetter}1`,
+      }
+
+      sheet.eachRow((row, rowNumber) => {
+        row.alignment = { vertical: "middle", wrapText: true }
+
+        row.eachCell((cell) => {
+          cell.border = {
+            top: { style: "thin", color: { argb: "EAEAEA" } },
+            left: { style: "thin", color: { argb: "EAEAEA" } },
+            bottom: { style: "thin", color: { argb: "EAEAEA" } },
+            right: { style: "thin", color: { argb: "EAEAEA" } },
+          }
+        })
+
+        if (rowNumber === 1) return
+
+        if (rowNumber % 2 === 0) {
+          row.eachCell((cell) => {
+            cell.fill = {
+              type: "pattern",
+              pattern: "solid",
+              fgColor: { argb: "F7F9FC" },
+            }
+          })
+        }
+      })
+    }
+
+    styleSheet(contatosSheet, "F")
+    styleSheet(emailsSheet, "A")
+    styleSheet(numerosSheet, "A")
+
+    const buffer = await workbook.xlsx.writeBuffer()
+    const blob = new Blob([buffer], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    })
+
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = "gestor_contatos.xlsx"
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+    URL.revokeObjectURL(url)
+  } catch (error) {
+    alert("Erro ao exportar a planilha.")
+    console.error(error)
+  }
 })
 
 modalClose.addEventListener("click", closeModal)
