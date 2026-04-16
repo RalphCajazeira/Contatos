@@ -9,6 +9,7 @@ const search = document.getElementById("search")
 const contactCount = document.getElementById("contactCount")
 const freeEmailCount = document.getElementById("freeEmailCount")
 const freePhoneCount = document.getElementById("freePhoneCount")
+const summaryCards = document.getElementById("summaryCards")
 
 function filteredUsers() {
   const term = normalize(search.value)
@@ -204,8 +205,53 @@ function renderUsers(users) {
     .join("")
 }
 
+function renderSummary() {
+  const summary = state.summary || {}
+
+  if (!summaryCards) return
+
+  summaryCards.innerHTML = `
+    <div class="summary-card">
+      <div class="summary-label">Total de contatos</div>
+      <div class="summary-value">${summary.totalUsers || 0}</div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-label">Ativos</div>
+      <div class="summary-value">${summary.activeUsers || 0}</div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-label">Inativos</div>
+      <div class="summary-value">${summary.inactiveUsers || 0}</div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-label">E-mails livres</div>
+      <div class="summary-value">${summary.availableEmails || 0}</div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-label">Números livres</div>
+      <div class="summary-value">${summary.availablePhones || 0}</div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-label">E-mails em uso</div>
+      <div class="summary-value">${summary.emailsInUse || 0}</div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-label">Números em uso</div>
+      <div class="summary-value">${summary.phonesInUse || 0}</div>
+    </div>
+  `
+}
+
 export function render() {
   const users = filteredUsers()
+
+  renderSummary()
 
   usersList.innerHTML = renderUsers(users)
   freeEmailsList.innerHTML = renderEmails(state.availableEmails || [])

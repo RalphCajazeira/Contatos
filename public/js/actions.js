@@ -1,6 +1,7 @@
 import { state } from "./state.js"
 import {
   fetchAll,
+  fetchSummary,
   createContact,
   updateContactName,
   addAvailableEmail,
@@ -30,10 +31,21 @@ import { openModal, openHtmlModal } from "./modal.js"
 import { escapeHtml, formatBR } from "./utils.js"
 
 export async function load() {
-  const data = await fetchAll()
+  const [data, summary] = await Promise.all([fetchAll(), fetchSummary()])
+
   state.users = data.users || []
   state.availableEmails = data.availableEmails || []
   state.availablePhones = data.availablePhones || []
+  state.summary = summary || {
+    totalUsers: 0,
+    activeUsers: 0,
+    inactiveUsers: 0,
+    availableEmails: 0,
+    availablePhones: 0,
+    emailsInUse: 0,
+    phonesInUse: 0,
+  }
+
   render()
 }
 

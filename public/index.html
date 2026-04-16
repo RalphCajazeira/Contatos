@@ -11,8 +11,11 @@
     <div class="app-shell">
       <header class="page-header">
         <div>
-          <h1>Gestor de E-mails e Linhas</h1>
-          <p>Contatos, e-mails livres e números livres em um só lugar.</p>
+          <h1>Gestor de Recursos de Contato</h1>
+          <p>
+            Contatos, e-mails, aliases, números, históricos e recursos
+            excluídos.
+          </p>
         </div>
 
         <div class="header-actions">
@@ -32,6 +35,8 @@
         </div>
       </header>
 
+      <section id="summaryCards" class="summary-grid"></section>
+
       <section class="toolbar-card">
         <div class="toolbar">
           <input
@@ -40,7 +45,6 @@
             type="text"
             placeholder="Buscar contato..."
           />
-
           <button id="btnAddContact" class="btn btn-secondary">
             Novo contato
           </button>
@@ -52,7 +56,7 @@
           </button>
         </div>
 
-        <div class="toolbar" style="margin-top: 12px">
+        <div class="toolbar toolbar-filters">
           <button class="btn btn-secondary" onclick="setUsersFilter('active')">
             Ativos
           </button>
