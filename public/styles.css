@@ -422,3 +422,15 @@ select option:hover {
   align-items: center;
   gap: 6px;
 }
+
+.resource-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.contact-edit {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

@@ -12,6 +12,11 @@ import {
   openAssignPhoneFromAvailable,
   openTransferEmailModal,
   openTransferPhoneModal,
+  openRenamePrimaryEmailModal,
+  openAliasesModal,
+  deleteAliasAction,
+  openDeletedResourcesModal,
+  restoreDeletedAliasAction,
   deleteAvailableEmailAction,
   deleteAvailablePhoneAction,
   removeEmailAction,
@@ -54,5 +59,10 @@ window.openPhoneHistory = openPhoneHistory
 window.openTransferEmailModal = openTransferEmailModal
 window.openTransferPhoneModal = openTransferPhoneModal
 window.openGlobalHistory = openGlobalHistory
+window.openRenamePrimaryEmailModal = openRenamePrimaryEmailModal
+window.openAliasesModal = openAliasesModal
+window.deleteAliasAction = deleteAliasAction
+window.openDeletedResourcesModal = openDeletedResourcesModal
+window.restoreDeletedAliasAction = restoreDeletedAliasAction
 
 load()

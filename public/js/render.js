@@ -139,16 +139,38 @@ function renderUsers(users) {
     user.emails && user.emails.length
       ? `<div class="chips">
           ${user.emails
-            .map(
-              (item) => `
-            <div class="chip">
-              <span>${escapeHtml(item.email)}${item.type ? ` • ${escapeHtml(item.type)}` : ""}</span>
-              <button class="remove-chip" title="Histórico" onclick="openEmailHistory('${item.email}', '${item.type || "principal"}')">🕘</button>
-              <button class="remove-chip" title="Transferir" onclick="openTransferEmailModal('${user.id}', '${item.email}', '${item.type || "principal"}')">⇄</button>
-              <button class="remove-chip" title="Remover" onclick="removeEmailAction('${user.id}', '${item.email}')">×</button>
-            </div>
-          `,
-            )
+            .map((item) => {
+              const isPrincipal = item.type === "principal"
+              const isAlias = item.type === "alias"
+
+              return `
+                <div class="chip">
+                  <span>${escapeHtml(item.email)}${item.type ? ` • ${escapeHtml(item.type)}` : ""}</span>
+
+                  <button class="remove-chip" title="Histórico" onclick="openEmailHistory('${item.email}', '${item.type || "principal"}')">🕘</button>
+
+                  ${
+                    isPrincipal
+                      ? `<button class="remove-chip" title="Renomear principal" onclick="openRenamePrimaryEmailModal('${user.id}', '${item.email}')">✎</button>`
+                      : ""
+                  }
+
+                  ${
+                    isPrincipal
+                      ? `<button class="remove-chip" title="Ver aliases" onclick="openAliasesModal('${user.id}', '${item.email}')">≡</button>`
+                      : ""
+                  }
+
+                  <button class="remove-chip" title="Transferir" onclick="openTransferEmailModal('${user.id}', '${item.email}', '${item.type || "principal"}')">⇄</button>
+
+                  ${
+                    isAlias
+                      ? ""
+                      : `<button class="remove-chip" title="Remover" onclick="removeEmailAction('${user.id}', '${item.email}')">×</button>`
+                  }
+                </div>
+              `
+            })
             .join("")}
         </div>`
       : `<div class="empty">Sem e-mails.</div>`

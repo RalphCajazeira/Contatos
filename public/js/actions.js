@@ -19,6 +19,11 @@ import {
   fetchHistoryByEmail,
   fetchHistoryByAlias,
   fetchHistoryByPhone,
+  renamePrimaryEmail,
+  fetchAliases,
+  deleteAlias,
+  fetchDeletedResources,
+  restoreDeletedAlias,
 } from "./api.js"
 import { render } from "./render.js"
 import { openModal, openHtmlModal } from "./modal.js"
@@ -442,4 +447,178 @@ export async function openGlobalHistory() {
   const history = await fetchHistory(200)
 
   openHtmlModal("Histórico geral", renderHistoryHtml(history))
+}
+
+export function openRenamePrimaryEmailModal(userId, oldEmail) {
+  openModal(
+    "Renomear e-mail principal",
+    [
+      {
+        name: "oldEmail",
+        label: "E-mail atual",
+        value: oldEmail,
+      },
+      {
+        name: "newEmail",
+        label: "Novo e-mail principal",
+        placeholder: "financeiro2@dipedra.com",
+      },
+    ],
+    async (values) => {
+      await renamePrimaryEmail({
+        userId,
+        oldEmail: values.oldEmail,
+        newEmail: values.newEmail,
+      })
+      await load()
+    },
+  )
+}
+
+export async function openAliasesModal(userId, principalEmail) {
+  const aliases = await fetchAliases(userId, principalEmail)
+
+  if (!aliases.length) {
+    openHtmlModal(
+      `Aliases de ${principalEmail}`,
+      `<div class="empty">Nenhum alias vinculado.</div>`,
+    )
+    return
+  }
+
+  const html = `
+    <div class="history-list">
+      ${aliases
+        .map(
+          (alias) => `
+        <div class="resource-card">
+          <div class="resource-text">
+            <div><strong>${escapeHtml(alias.email)}</strong></div>
+            <div class="resource-meta">
+              Criado em: ${escapeHtml(new Date(alias.createdAt).toLocaleString("pt-BR"))}
+            </div>
+          </div>
+          <div class="resource-actions">
+            <button class="small-btn" onclick="openEmailHistory('${alias.email}', 'alias')">Histórico</button>
+            <button class="small-btn danger" onclick="deleteAliasAction('${userId}', '${principalEmail}', '${alias.email}')">Excluir alias</button>
+          </div>
+        </div>
+      `,
+        )
+        .join("")}
+    </div>
+  `
+
+  openHtmlModal(`Aliases de ${principalEmail}`, html)
+}
+
+export async function deleteAliasAction(userId, principalEmail, aliasEmail) {
+  if (!confirm(`Excluir o alias ${aliasEmail}?`)) return
+
+  await deleteAlias({
+    userId,
+    principalEmail,
+    aliasEmail,
+  })
+
+  await load()
+  await openAliasesModal(userId, principalEmail)
+}
+
+export async function openDeletedResourcesModal() {
+  const deleted = await fetchDeletedResources()
+
+  const deletedAliases = deleted.aliases || []
+  const deletedEmails = deleted.emails || []
+  const deletedPhones = deleted.phones || []
+
+  const html = `
+    <div class="history-list">
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Aliases excluídos</h3>
+          <span class="badge">${deletedAliases.length}</span>
+        </div>
+        ${
+          deletedAliases.length
+            ? deletedAliases
+                .map(
+                  (item) => `
+              <div class="resource-card">
+                <div class="resource-text">
+                  <div><strong>${escapeHtml(item.email)}</strong></div>
+                  <div class="resource-meta">Principal: ${escapeHtml(item.principalEmail || "-")}</div>
+                  <div class="resource-meta">Usuário: ${escapeHtml(item.userName || "-")}</div>
+                  <div class="resource-meta">Excluído em: ${escapeHtml(new Date(item.deletedAt).toLocaleString("pt-BR"))}</div>
+                </div>
+                <div class="resource-actions">
+                  <button class="small-btn" onclick="restoreDeletedAliasAction('${item.id}')">Restaurar</button>
+                </div>
+              </div>
+            `,
+                )
+                .join("")
+            : `<div class="empty">Nenhum alias excluído.</div>`
+        }
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>E-mails excluídos</h3>
+          <span class="badge">${deletedEmails.length}</span>
+        </div>
+        ${
+          deletedEmails.length
+            ? deletedEmails
+                .map(
+                  (item) => `
+              <div class="resource-card">
+                <div class="resource-text">
+                  <div><strong>${escapeHtml(item.email)}</strong></div>
+                  <div class="resource-meta">Tipo: ${escapeHtml(item.type || "-")}</div>
+                  <div class="resource-meta">Usuário: ${escapeHtml(item.userName || "-")}</div>
+                  <div class="resource-meta">Excluído em: ${escapeHtml(new Date(item.deletedAt).toLocaleString("pt-BR"))}</div>
+                </div>
+              </div>
+            `,
+                )
+                .join("")
+            : `<div class="empty">Nenhum e-mail excluído.</div>`
+        }
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Números excluídos</h3>
+          <span class="badge">${deletedPhones.length}</span>
+        </div>
+        ${
+          deletedPhones.length
+            ? deletedPhones
+                .map(
+                  (item) => `
+              <div class="resource-card">
+                <div class="resource-text">
+                  <div><strong>${escapeHtml(formatBR(item.number))}</strong></div>
+                  <div class="resource-meta">Tipo: ${escapeHtml(item.type || "-")}</div>
+                  <div class="resource-meta">Usuário: ${escapeHtml(item.userName || "-")}</div>
+                  <div class="resource-meta">Excluído em: ${escapeHtml(new Date(item.deletedAt).toLocaleString("pt-BR"))}</div>
+                </div>
+              </div>
+            `,
+                )
+                .join("")
+            : `<div class="empty">Nenhum número excluído.</div>`
+        }
+      </div>
+    </div>
+  `
+
+  openHtmlModal("Recursos excluídos", html)
+}
+
+export async function restoreDeletedAliasAction(aliasId) {
+  await restoreDeletedAlias({ aliasId })
+  await load()
+  await openDeletedResourcesModal()
 }

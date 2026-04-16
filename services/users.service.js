@@ -94,6 +94,7 @@ function normalizeUser(user) {
     inactivatedAt: user.inactivatedAt || null,
     emails: Array.isArray(user.emails)
       ? user.emails.map((item) => ({
+          id: item.id || crypto.randomUUID(),
           email: normalizeEmail(item.email),
           type:
             item.type === "principal"
@@ -103,10 +104,20 @@ function normalizeUser(user) {
                 : item.type === "alias"
                   ? "alias"
                   : "alternativo",
+          aliases: Array.isArray(item.aliases)
+            ? item.aliases.map((alias) => ({
+                id: alias.id || crypto.randomUUID(),
+                email: normalizeEmail(alias.email),
+                createdAt: alias.createdAt || nowIso(),
+                deletedAt: alias.deletedAt || null,
+                active: alias.active !== false,
+              }))
+            : [],
         }))
       : [],
     phones: Array.isArray(user.phones)
       ? user.phones.map((item) => ({
+          id: item.id || crypto.randomUUID(),
           number: normalizePhone(item.number),
           type: item.type === "pessoal" ? "pessoal" : "dipedra",
         }))
@@ -148,6 +159,15 @@ function readData() {
     : []
 
   data.history = Array.isArray(data.history) ? data.history : []
+  data.deletedEmails = Array.isArray(data.deletedEmails)
+    ? data.deletedEmails
+    : []
+  data.deletedPhones = Array.isArray(data.deletedPhones)
+    ? data.deletedPhones
+    : []
+  data.deletedAliases = Array.isArray(data.deletedAliases)
+    ? data.deletedAliases
+    : []
 
   return data
 }
@@ -161,6 +181,15 @@ function persist(data) {
     uniquePhones(data.availablePhones || []),
   )
   data.history = Array.isArray(data.history) ? data.history : []
+  data.deletedEmails = Array.isArray(data.deletedEmails)
+    ? data.deletedEmails
+    : []
+  data.deletedPhones = Array.isArray(data.deletedPhones)
+    ? data.deletedPhones
+    : []
+  data.deletedAliases = Array.isArray(data.deletedAliases)
+    ? data.deletedAliases
+    : []
 
   db.write(data)
   return data
@@ -651,12 +680,22 @@ function removeEmail({ userId, email }) {
     })
   }
 
+  data.deletedEmails.push({
+    id: found.id,
+    email: normalizedEmail,
+    type: found.type,
+    aliases: found.aliases || [],
+    userId: user.id,
+    userName: user.name,
+    deletedAt: nowIso(),
+  })
+
   addHistory(
     data,
     createHistoryEntry({
       entityType: found.type === "alias" ? "alias" : "email",
       entityValue: normalizedEmail,
-      action: "removed",
+      action: "deleted",
       fromUserId: user.id,
       fromUserName: user.name,
     }),
@@ -702,12 +741,21 @@ function removePhone({ userId, number }) {
     })
   }
 
+  data.deletedPhones.push({
+    id: found.id,
+    number: normalizedNumber,
+    type: found.type,
+    userId: user.id,
+    userName: user.name,
+    deletedAt: nowIso(),
+  })
+
   addHistory(
     data,
     createHistoryEntry({
       entityType: "phone",
       entityValue: normalizedNumber,
-      action: "removed",
+      action: "deleted",
       fromUserId: user.id,
       fromUserName: user.name,
     }),
@@ -1210,6 +1258,286 @@ function getSummary() {
   }
 }
 
+function renamePrimaryEmail({ userId, oldEmail, newEmail }) {
+  const data = readData()
+  const user = data.users.find((u) => u.id === userId)
+
+  if (!user) {
+    const error = new Error("Contato não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  const normalizedOldEmail = normalizeEmail(oldEmail)
+  const normalizedNewEmail = normalizeEmail(newEmail)
+
+  if (!normalizedOldEmail || !normalizedNewEmail) {
+    const error = new Error("E-mail antigo e novo e-mail são obrigatórios.")
+    error.status = 400
+    throw error
+  }
+
+  const emailEntry = (user.emails || []).find(
+    (item) =>
+      normalizeEmail(item.email) === normalizedOldEmail &&
+      item.type === "principal",
+  )
+
+  if (!emailEntry) {
+    const error = new Error("E-mail principal não encontrado no contato.")
+    error.status = 404
+    throw error
+  }
+
+  const emailAlreadyInUse = data.users.some((u) =>
+    (u.emails || []).some(
+      (item) => normalizeEmail(item.email) === normalizedNewEmail,
+    ),
+  )
+
+  const aliasAlreadyInUse = data.users.some((u) =>
+    (u.emails || []).some((item) =>
+      (item.aliases || []).some(
+        (alias) =>
+          alias.active !== false &&
+          normalizeEmail(alias.email) === normalizedNewEmail,
+      ),
+    ),
+  )
+
+  const availableAlreadyInUse = (data.availableEmails || []).some(
+    (item) => normalizeEmail(item.email) === normalizedNewEmail,
+  )
+
+  if (emailAlreadyInUse || aliasAlreadyInUse || availableAlreadyInUse) {
+    const error = new Error("O novo e-mail já está em uso no sistema.")
+    error.status = 409
+    throw error
+  }
+
+  const previousEmail = emailEntry.email
+
+  emailEntry.aliases = Array.isArray(emailEntry.aliases)
+    ? emailEntry.aliases
+    : []
+  emailEntry.aliases.push({
+    id: crypto.randomUUID(),
+    email: previousEmail,
+    createdAt: nowIso(),
+    deletedAt: null,
+    active: true,
+  })
+
+  emailEntry.email = normalizedNewEmail
+
+  addHistory(
+    data,
+    createHistoryEntry({
+      entityType: "email",
+      entityValue: normalizedNewEmail,
+      action: "renamed",
+      toUserId: user.id,
+      toUserName: user.name,
+      metadata: {
+        oldEmail: previousEmail,
+        newEmail: normalizedNewEmail,
+      },
+    }),
+  )
+
+  addHistory(
+    data,
+    createHistoryEntry({
+      entityType: "alias",
+      entityValue: previousEmail,
+      action: "created_from_rename",
+      toUserId: user.id,
+      toUserName: user.name,
+      metadata: {
+        principalEmail: normalizedNewEmail,
+      },
+    }),
+  )
+
+  persist(data)
+
+  return user
+}
+
+function deleteAlias({ userId, principalEmail, aliasEmail }) {
+  const data = readData()
+  const user = data.users.find((u) => u.id === userId)
+
+  if (!user) {
+    const error = new Error("Contato não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  const normalizedPrincipal = normalizeEmail(principalEmail)
+  const normalizedAlias = normalizeEmail(aliasEmail)
+
+  const emailEntry = (user.emails || []).find(
+    (item) => normalizeEmail(item.email) === normalizedPrincipal,
+  )
+
+  if (!emailEntry) {
+    const error = new Error("E-mail principal não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  const aliasEntry = (emailEntry.aliases || []).find(
+    (alias) =>
+      alias.active !== false && normalizeEmail(alias.email) === normalizedAlias,
+  )
+
+  if (!aliasEntry) {
+    const error = new Error("Alias não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  aliasEntry.active = false
+  aliasEntry.deletedAt = nowIso()
+
+  data.deletedAliases.push({
+    id: aliasEntry.id,
+    email: aliasEntry.email,
+    principalEmail: emailEntry.email,
+    userId: user.id,
+    userName: user.name,
+    deletedAt: aliasEntry.deletedAt,
+  })
+
+  addHistory(
+    data,
+    createHistoryEntry({
+      entityType: "alias",
+      entityValue: aliasEntry.email,
+      action: "deleted",
+      fromUserId: user.id,
+      fromUserName: user.name,
+      metadata: {
+        principalEmail: emailEntry.email,
+      },
+    }),
+  )
+
+  persist(data)
+
+  return user
+}
+
+function getAliasesByPrincipal({ userId, principalEmail }) {
+  const data = readData()
+  const user = data.users.find((u) => u.id === userId)
+
+  if (!user) {
+    const error = new Error("Contato não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  const normalizedPrincipal = normalizeEmail(principalEmail)
+
+  const emailEntry = (user.emails || []).find(
+    (item) => normalizeEmail(item.email) === normalizedPrincipal,
+  )
+
+  if (!emailEntry) {
+    const error = new Error("E-mail principal não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  return (emailEntry.aliases || []).filter((alias) => alias.active !== false)
+}
+
+function getDeletedResources() {
+  const data = readData()
+
+  return {
+    emails: data.deletedEmails || [],
+    phones: data.deletedPhones || [],
+    aliases: data.deletedAliases || [],
+  }
+}
+
+function restoreDeletedAlias({ aliasId }) {
+  const data = readData()
+
+  const deletedAliasIndex = (data.deletedAliases || []).findIndex(
+    (item) => item.id === aliasId,
+  )
+
+  if (deletedAliasIndex === -1) {
+    const error = new Error("Alias excluído não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  const deletedAlias = data.deletedAliases[deletedAliasIndex]
+
+  const user = data.users.find((u) => u.id === deletedAlias.userId)
+  if (!user) {
+    const error = new Error("Contato vinculado ao alias não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  const emailEntry = (user.emails || []).find(
+    (item) =>
+      normalizeEmail(item.email) ===
+      normalizeEmail(deletedAlias.principalEmail),
+  )
+
+  if (!emailEntry) {
+    const error = new Error("E-mail principal do alias não encontrado.")
+    error.status = 404
+    throw error
+  }
+
+  emailEntry.aliases = Array.isArray(emailEntry.aliases)
+    ? emailEntry.aliases
+    : []
+
+  const existingAlias = emailEntry.aliases.find((alias) => alias.id === aliasId)
+
+  if (existingAlias) {
+    existingAlias.active = true
+    existingAlias.deletedAt = null
+  } else {
+    emailEntry.aliases.push({
+      id: deletedAlias.id,
+      email: deletedAlias.email,
+      createdAt: nowIso(),
+      deletedAt: null,
+      active: true,
+    })
+  }
+
+  data.deletedAliases.splice(deletedAliasIndex, 1)
+
+  addHistory(
+    data,
+    createHistoryEntry({
+      entityType: "alias",
+      entityValue: deletedAlias.email,
+      action: "restored",
+      toUserId: user.id,
+      toUserName: user.name,
+      metadata: {
+        principalEmail: deletedAlias.principalEmail,
+      },
+    }),
+  )
+
+  persist(data)
+
+  return user
+}
+
 module.exports = {
   getAll,
   getHistory,
@@ -1235,4 +1563,9 @@ module.exports = {
   removePhone,
   deleteAvailableEmail,
   deleteAvailablePhone,
+  renamePrimaryEmail,
+  deleteAlias,
+  getAliasesByPrincipal,
+  getDeletedResources,
+  restoreDeletedAlias,
 }

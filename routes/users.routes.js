@@ -33,4 +33,11 @@ router.post("/transfer-phone", controller.transferPhone)
 router.post("/remove-email", controller.removeEmail)
 router.post("/remove-phone", controller.removePhone)
 
+router.get("/deleted", controller.getDeletedResources)
+router.get("/aliases", controller.getAliasesByPrincipal)
+
+router.post("/rename-primary-email", controller.renamePrimaryEmail)
+router.post("/delete-alias", controller.deleteAlias)
+router.post("/restore-deleted-alias", controller.restoreDeletedAlias)
+
 module.exports = router

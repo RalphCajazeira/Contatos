@@ -302,3 +302,65 @@ exports.getSummary = (req, res) => {
     handleError(res, error)
   }
 }
+
+exports.renamePrimaryEmail = (req, res) => {
+  try {
+    const user = usersService.renamePrimaryEmail({
+      userId: req.body.userId,
+      oldEmail: req.body.oldEmail,
+      newEmail: req.body.newEmail,
+    })
+
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.deleteAlias = (req, res) => {
+  try {
+    const user = usersService.deleteAlias({
+      userId: req.body.userId,
+      principalEmail: req.body.principalEmail,
+      aliasEmail: req.body.aliasEmail,
+    })
+
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getAliasesByPrincipal = (req, res) => {
+  try {
+    const aliases = usersService.getAliasesByPrincipal({
+      userId: req.query.userId,
+      principalEmail: req.query.principalEmail,
+    })
+
+    res.json(aliases)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.getDeletedResources = (req, res) => {
+  try {
+    const deleted = usersService.getDeletedResources()
+    res.json(deleted)
+  } catch (error) {
+    handleError(res, error)
+  }
+}
+
+exports.restoreDeletedAlias = (req, res) => {
+  try {
+    const user = usersService.restoreDeletedAlias({
+      aliasId: req.body.aliasId,
+    })
+
+    res.json(user)
+  } catch (error) {
+    handleError(res, error)
+  }
+}

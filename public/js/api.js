@@ -143,3 +143,40 @@ export async function transferPhone(payload) {
 export async function fetchHistory(limit = 100) {
   return request(`${API}/history?limit=${limit}`)
 }
+
+export async function renamePrimaryEmail(payload) {
+  return request(`${API}/rename-primary-email`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+}
+
+export async function fetchAliases(userId, principalEmail) {
+  const params = new URLSearchParams({
+    userId,
+    principalEmail,
+  })
+
+  return request(`${API}/aliases?${params.toString()}`)
+}
+
+export async function deleteAlias(payload) {
+  return request(`${API}/delete-alias`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+}
+
+export async function fetchDeletedResources() {
+  return request(`${API}/deleted`)
+}
+
+export async function restoreDeletedAlias(payload) {
+  return request(`${API}/restore-deleted-alias`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+}

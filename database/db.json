@@ -7,12 +7,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "2b1617b5-63d1-4c61-b1f8-64b6df941b38",
           "email": "andresoledade@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "d2c01abf-27ab-4565-b16a-a9666a40df0d",
           "number": "71993237377",
           "type": "pessoal"
         }
@@ -25,12 +28,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "2a1821fe-7c73-44d5-a6ad-8b58e367fca5",
           "email": "financeiro1@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "940994df-a950-4a0f-870b-c4c247f92983",
           "number": "71997428974",
           "type": "dipedra"
         }
@@ -43,12 +49,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "d122395b-00e0-47f2-ac25-6606a1adf209",
           "email": "projetos01@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "c2f1afe6-e998-4a05-a5c1-140840992580",
           "number": "71992049337",
           "type": "pessoal"
         }
@@ -61,16 +70,20 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "35643fee-0013-44cf-bcb6-a1570cf614af",
           "email": "gerente.adm@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "1a0da706-4700-4d33-8519-770a7da15d3a",
           "number": "71996730348",
           "type": "pessoal"
         },
         {
+          "id": "30f98a2e-900b-4ca8-8427-24f6c6e9c144",
           "number": "71982346190",
           "type": "dipedra"
         }
@@ -83,8 +96,10 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "5ace5218-ff75-48f6-a8dd-75eaa0351281",
           "email": "comercial07@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": []
@@ -96,12 +111,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "9b50cba9-25b5-4a8e-9c7d-a1008c65d629",
           "email": "almoxarifado@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "2894bd3c-baee-42c9-b09a-2d38438b6aae",
           "number": "71999566893",
           "type": "pessoal"
         }
@@ -114,12 +132,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "46c2ef16-f416-4a5f-bc21-6b4a867ef4d9",
           "email": "comercial06@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "b867e2a9-3c3c-4e5d-ae31-c8384fa45847",
           "number": "71999815414",
           "type": "dipedra"
         }
@@ -132,12 +153,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "beb494ff-1251-4513-8a07-c065cc350b05",
           "email": "tecnico01@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "afa05833-65de-4ce7-9700-678e73c0ac4f",
           "number": "71996379527",
           "type": "dipedra"
         }
@@ -150,16 +174,20 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "9fe2deab-fce9-4750-bbf4-45d2da743a36",
           "email": "franciscacruz@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "3b51e6c9-0434-4e43-8879-729c9ee7d879",
           "number": "71991431312",
           "type": "pessoal"
         },
         {
+          "id": "726fcbbc-67c0-426f-b380-5ef2dfd9baa5",
           "number": "71999411203",
           "type": "dipedra"
         }
@@ -172,12 +200,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "e610ee36-d3ff-49ec-b30d-55114e692d9d",
           "email": "logistica@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "3aaaa44f-c9fe-4c50-ad59-247dd95d0207",
           "number": "71999119466",
           "type": "dipedra"
         }
@@ -191,6 +222,7 @@
       "emails": [],
       "phones": [
         {
+          "id": "8b852432-f8ad-4dd8-b3bf-e859ac04f9f3",
           "number": "71997339498",
           "type": "dipedra"
         }
@@ -203,12 +235,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "b2caa9cf-a8c3-496e-97e5-099ad74d51e5",
           "email": "jorgepenna@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "f8f74c3c-d564-4f50-a831-b41b039cbcc2",
           "number": "71999858845",
           "type": "pessoal"
         }
@@ -221,12 +256,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "178b891d-6a79-4814-a5e9-5c37b829988a",
           "email": "comercial08@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "2ffd22e5-ab4f-43e7-b956-e36056a63802",
           "number": "71999009497",
           "type": "dipedra"
         }
@@ -239,12 +277,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "d416813d-3fb8-4932-8a2e-82aea2e57147",
           "email": "comercial10@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "3342bac5-bb41-4002-ae5e-810f57a73a12",
           "number": "71996058883",
           "type": "dipedra"
         }
@@ -257,8 +298,10 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "ac36c8cc-d5e9-4145-be6f-bd47215f6127",
           "email": "pcp@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": []
@@ -270,12 +313,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "64244c76-f02d-4dbf-b600-021edf23b572",
           "email": "gerente.producao@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "69e8ae91-753a-4fbc-bf9c-783e261175a6",
           "number": "71992160020",
           "type": "pessoal"
         }
@@ -288,12 +334,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "f946e419-33f4-443e-ad64-914911831117",
           "email": "gerente.loja@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "ca7fb875-780b-4d6d-8050-0a31a0ca5315",
           "number": "71996355486",
           "type": "dipedra"
         }
@@ -306,12 +355,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "62b65b7e-6cb6-497b-a1a3-0167f2b22a0f",
           "email": "comercial04@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "e9bfc7c4-54f7-41f7-b670-5530c1db8ff3",
           "number": "71991440613",
           "type": "dipedra"
         }
@@ -324,8 +376,10 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "bfc36c3c-f127-440a-a521-7bf962e1490e",
           "email": "pcp01@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": []
@@ -338,6 +392,7 @@
       "emails": [],
       "phones": [
         {
+          "id": "c4ce1de9-286a-4c0f-8752-ab9a3f3d99cc",
           "number": "71999972265",
           "type": "dipedra"
         }
@@ -350,12 +405,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "4df85992-a95a-4601-b5ad-99c1a27c0034",
           "email": "marcos@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "269704e5-89c7-4993-8f6c-107f69ad9630",
           "number": "71992339491",
           "type": "pessoal"
         }
@@ -368,12 +426,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "af96fade-4eb3-4b9c-9f65-82f49097cae8",
           "email": "sac@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "b3a41513-95ef-4c4f-8e79-546daaffffb6",
           "number": "71996282288",
           "type": "dipedra"
         }
@@ -386,12 +447,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "3b3cdb3c-858e-438b-aa06-1539c48843dd",
           "email": "patricia@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "5e7d33cf-9d5f-449e-910c-81d49189925f",
           "number": "71991714159",
           "type": "dipedra"
         }
@@ -404,16 +468,20 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "53702cb9-f1a7-48b6-b965-db98fa006742",
           "email": "comercial05@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "9329e2f8-ba54-496c-92a8-bac8a2d09c1a",
           "number": "71996498614",
           "type": "pessoal"
         },
         {
+          "id": "246926df-980b-4ff5-ac3b-7c83b1be2a30",
           "number": "71999690216",
           "type": "dipedra"
         }
@@ -426,12 +494,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "e4fc4490-5ce1-4520-b3e0-83da92bf37f7",
           "email": "dev@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "db5a8f3c-3eba-4c4a-9ef1-0a8bf1d6196f",
           "number": "71999227700",
           "type": "dipedra"
         }
@@ -444,12 +515,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "4bb69120-6ca7-4029-971e-d05db07b514b",
           "email": "comercial03@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "b3399906-50ab-4ebe-80eb-5a4185d0aad7",
           "number": "71992339558",
           "type": "pessoal"
         }
@@ -462,12 +536,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "3fb552f3-97ad-4a8c-b9c7-6253a9efd047",
           "email": "romario.romero@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "d1f831d0-91fd-42c3-8e82-676397082560",
           "number": "71996730348",
           "type": "pessoal"
         }
@@ -480,12 +557,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "a3c32ebe-29d4-4a69-8e3b-f4043e2fbd50",
           "email": "tiago@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "9275fe61-7712-4f0c-a640-48567b2a00a4",
           "number": "71988992889",
           "type": "dipedra"
         }
@@ -498,12 +578,15 @@
       "inactivatedAt": null,
       "emails": [
         {
+          "id": "dc283662-1125-4ec6-8e26-ee0126c679fc",
           "email": "comercial02@dipedra.com",
-          "type": "principal"
+          "type": "principal",
+          "aliases": []
         }
       ],
       "phones": [
         {
+          "id": "aa71cf6f-0dfb-499b-9850-6603ac08bd7a",
           "number": "71982764178",
           "type": "dipedra"
         }
@@ -527,5 +610,8 @@
       "releasedAt": null
     }
   ],
-  "history": []
+  "history": [],
+  "deletedEmails": [],
+  "deletedPhones": [],
+  "deletedAliases": []
 }
