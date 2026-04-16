@@ -112,17 +112,6 @@
       ]
     },
     {
-      "id": "e9ad9b1f-5491-410f-9a6f-168f3f900488",
-      "name": "Encarregado Expedição",
-      "emails": [],
-      "phones": [
-        {
-          "number": "71999551699",
-          "type": "dipedra"
-        }
-      ]
-    },
-    {
       "id": "962e3d61-5769-420e-baff-65e4b51d3929",
       "name": "Érico Santos",
       "emails": [
@@ -170,6 +159,17 @@
       "phones": [
         {
           "number": "71999119466",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "33826c28-03a4-48a1-85e0-ba45718089de",
+      "name": "Ionilda (Mãe Marcos)",
+      "emails": [],
+      "phones": [
+        {
+          "number": "71997339498",
           "type": "dipedra"
         }
       ]
@@ -293,6 +293,17 @@
       "phones": []
     },
     {
+      "id": "b679ebf7-45aa-4567-b24d-9f5e4b630edf",
+      "name": "Marcos (SW4)",
+      "emails": [],
+      "phones": [
+        {
+          "number": "71999972265",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
       "id": "a3391ef5-202d-4676-acc6-61b181c7aac2",
       "name": "Marcos Oliveira",
       "emails": [
@@ -305,28 +316,6 @@
         {
           "number": "71992339491",
           "type": "pessoal"
-        }
-      ]
-    },
-    {
-      "id": "b679ebf7-45aa-4567-b24d-9f5e4b630edf",
-      "name": "Marcos SW4",
-      "emails": [],
-      "phones": [
-        {
-          "number": "71999972265",
-          "type": "dipedra"
-        }
-      ]
-    },
-    {
-      "id": "33826c28-03a4-48a1-85e0-ba45718089de",
-      "name": "Nilda",
-      "emails": [],
-      "phones": [
-        {
-          "number": "71997339498",
-          "type": "dipedra"
         }
       ]
     },
@@ -447,17 +436,6 @@
       ]
     },
     {
-      "id": "c441183f-ac16-491b-8f90-f6e35cefba46",
-      "name": "Vicente Santana",
-      "emails": [],
-      "phones": [
-        {
-          "number": "71981353181",
-          "type": "pessoal"
-        }
-      ]
-    },
-    {
       "id": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
       "name": "Wallace Araujo",
       "emails": [
@@ -478,6 +456,9 @@
   "availablePhones": [
     {
       "number": "71999001163"
+    },
+    {
+      "number": "71999551699"
     }
   ]
 }

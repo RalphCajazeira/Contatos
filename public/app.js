@@ -712,17 +712,19 @@ btnExport.addEventListener("click", async () => {
     function styleSheet(sheet, lastColumnLetter) {
       const header = sheet.getRow(1)
 
-      header.font = { bold: true, color: { argb: "FFFFFFFF" } }
-      header.fill = {
-        type: "pattern",
-        pattern: "solid",
-        fgColor: { argb: "1F4E78" },
-      }
-      header.alignment = {
-        vertical: "middle",
-        horizontal: "center",
-        wrapText: true,
-      }
+      header.eachCell((cell) => {
+        cell.font = { bold: true, color: { argb: "FFFFFFFF" } }
+        cell.fill = {
+          type: "pattern",
+          pattern: "solid",
+          fgColor: { argb: "1F4E78" },
+        }
+        cell.alignment = {
+          vertical: "middle",
+          horizontal: "center",
+          wrapText: true,
+        }
+      })
 
       sheet.autoFilter = {
         from: "A1",
@@ -777,6 +779,378 @@ btnExport.addEventListener("click", async () => {
     console.error(error)
   }
 })
+
+const btnExportPdf = document.getElementById("btnExportPdf")
+
+function openExportPdfModal() {
+  openModal(
+    "Exportar PDF",
+    [
+      {
+        name: "sheetType",
+        label: "Qual planilha deseja exportar?",
+        type: "select",
+        value: "all",
+        options: [
+          { value: "contatos", label: "Contatos" },
+          { value: "emails", label: "E-mails Livres" },
+          { value: "numeros", label: "Números Livres" },
+          { value: "all", label: "Todas" },
+        ],
+      },
+    ],
+    async (values) => {
+      await exportPdf(values.sheetType)
+    },
+  )
+}
+
+async function exportPdf(sheetType) {
+  const { jsPDF } = window.jspdf
+  const doc = new jsPDF({
+    orientation: "landscape",
+    unit: "mm",
+    format: "a4",
+  })
+
+  const contatos = [...state.users]
+    .sort((a, b) =>
+      a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" }),
+    )
+    .map((user) => [
+      user.name || "",
+      (user.emails || [])
+        .filter((item) => item.type === "principal")
+        .map((item) => item.email)
+        .join("\n"),
+      (user.emails || [])
+        .filter((item) => item.type === "alternativo")
+        .map((item) => item.email)
+        .join("\n"),
+      (user.phones || [])
+        .filter((item) => item.type === "dipedra")
+        .map((item) => formatBR(item.number))
+        .join("\n"),
+      (user.phones || [])
+        .filter((item) => item.type === "pessoal")
+        .map((item) => formatBR(item.number))
+        .join("\n"),
+      (user.emails || [])
+        .filter((item) => item.type === "pessoal")
+        .map((item) => item.email)
+        .join("\n"),
+    ])
+
+  const emailsLivres = [...(state.availableEmails || [])]
+    .sort((a, b) =>
+      a.email.localeCompare(b.email, "pt-BR", { sensitivity: "base" }),
+    )
+    .map((item) => [item.email])
+
+  const numerosLivres = [...(state.availablePhones || [])]
+    .sort((a, b) => digits(a.number).localeCompare(digits(b.number), "pt-BR"))
+    .map((item) => [formatBR(item.number)])
+
+  function drawTitle(title) {
+    doc.setFont("helvetica", "bold")
+    doc.setFontSize(12)
+    doc.text(title, 14, 12)
+
+    doc.setFont("helvetica", "normal")
+    doc.setFontSize(8)
+    doc.text(`Gerado em: ${new Date().toLocaleString("pt-BR")}`, 14, 18)
+  }
+
+  function getScaledWidths(baseWidths, pageUsableWidth) {
+    const total = baseWidths.reduce((sum, width) => sum + width, 0)
+
+    if (total <= pageUsableWidth) {
+      const extra = pageUsableWidth / total
+      return baseWidths.map((width) => +(width * extra).toFixed(2))
+    }
+
+    const ratio = pageUsableWidth / total
+    return baseWidths.map((width) => +(width * ratio).toFixed(2))
+  }
+
+  function getCompactConfig(rowCount) {
+    if (rowCount <= 20) {
+      return {
+        bodyFontSize: 8,
+        headFontSize: 8,
+        cellPadding: 1.6,
+      }
+    }
+
+    if (rowCount <= 28) {
+      return {
+        bodyFontSize: 7.2,
+        headFontSize: 7.4,
+        cellPadding: 1.2,
+      }
+    }
+
+    if (rowCount <= 35) {
+      return {
+        bodyFontSize: 6.5,
+        headFontSize: 6.8,
+        cellPadding: 1,
+      }
+    }
+
+    return {
+      bodyFontSize: 5.8,
+      headFontSize: 6.2,
+      cellPadding: 0.8,
+    }
+  }
+
+  function contatosTable() {
+    drawTitle("Contatos")
+
+    const headers = [
+      "Nome",
+      "E-mail Principal",
+      "E-mail Alternativo (Alias)",
+      "Telefone Dipedra",
+      "Telefone Pessoal",
+      "E-mail Pessoal",
+    ]
+
+    function getTextWidth(text, fontSize = 7) {
+      doc.setFont("helvetica", "normal")
+      doc.setFontSize(fontSize)
+      return doc.getTextWidth(String(text || ""))
+    }
+
+    function getColumnNaturalWidth(index) {
+      let max = getTextWidth(headers[index], 7.4) + 6
+
+      contatos.forEach((row) => {
+        const cell = row[index] || ""
+        const lines = String(cell).split("\n")
+
+        lines.forEach((line) => {
+          const width = getTextWidth(line, 6.6) + 6
+          if (width > max) max = width
+        })
+      })
+
+      return max
+    }
+
+    let widths = [
+      getColumnNaturalWidth(0),
+      getColumnNaturalWidth(1),
+      getColumnNaturalWidth(2),
+      getColumnNaturalWidth(3),
+      getColumnNaturalWidth(4),
+      getColumnNaturalWidth(5),
+    ]
+
+    const minWidths = [24, 34, 36, 24, 24, 30]
+    const maxWidths = [58, 78, 82, 40, 40, 70]
+
+    widths = widths.map((w, i) =>
+      Math.max(minWidths[i], Math.min(maxWidths[i], w)),
+    )
+
+    const pageWidth = doc.internal.pageSize.getWidth()
+    const pageUsableWidth = pageWidth - 12 // margem total mínima visual
+
+    const naturalTableWidth = widths.reduce((sum, w) => sum + w, 0)
+
+    let scale = pageUsableWidth / naturalTableWidth
+    scale = Math.max(0.78, Math.min(1.28, scale))
+
+    widths = widths.map((w) => +(w * scale).toFixed(2))
+
+    const rowCount = contatos.length
+
+    let bodyFontSize =
+      rowCount > 35 ? 5.8 : rowCount > 28 ? 6.2 : rowCount > 22 ? 6.7 : 7.2
+
+    let headerFontSize = bodyFontSize + 0.5
+    let cellPadding = rowCount > 35 ? 0.55 : rowCount > 28 ? 0.75 : 0.95
+
+    bodyFontSize = +(bodyFontSize * scale).toFixed(2)
+    headerFontSize = +(headerFontSize * scale).toFixed(2)
+    cellPadding = +(cellPadding * scale).toFixed(2)
+
+    bodyFontSize = Math.max(5.4, Math.min(8.4, bodyFontSize))
+    headerFontSize = Math.max(5.8, Math.min(8.8, headerFontSize))
+    cellPadding = Math.max(0.45, Math.min(1.4, cellPadding))
+
+    const tableWidth = widths.reduce((sum, w) => sum + w, 0)
+    const centerLeft = Math.max(4, (pageWidth - tableWidth) / 2)
+
+    doc.autoTable({
+      startY: 24,
+      head: [headers],
+      body: contatos,
+
+      styles: {
+        font: "helvetica",
+        fontSize: bodyFontSize,
+        cellPadding,
+        overflow: "linebreak",
+        valign: "middle",
+        lineWidth: 0.1,
+        lineColor: [220, 220, 220],
+      },
+
+      headStyles: {
+        fillColor: [31, 78, 120],
+        textColor: [255, 255, 255],
+        fontStyle: "bold",
+        fontSize: headerFontSize,
+        cellPadding,
+        halign: "left",
+        valign: "middle",
+      },
+
+      alternateRowStyles: {
+        fillColor: [247, 249, 252],
+      },
+
+      columnStyles: {
+        0: { cellWidth: widths[0] },
+        1: { cellWidth: widths[1] },
+        2: { cellWidth: widths[2] },
+        3: { cellWidth: widths[3] },
+        4: { cellWidth: widths[4] },
+        5: { cellWidth: widths[5] },
+      },
+
+      margin: {
+        top: 24,
+        left: centerLeft,
+      },
+
+      tableWidth,
+      pageBreak: "auto",
+      rowPageBreak: "avoid",
+    })
+  }
+
+  function emailsTable() {
+    drawTitle("E-mails Livres")
+
+    const rowCount = emailsLivres.length
+    const compact =
+      rowCount > 40
+        ? { bodyFontSize: 7, headFontSize: 7.2, cellPadding: 1 }
+        : { bodyFontSize: 9, headFontSize: 9, cellPadding: 2 }
+
+    const marginLeft = 10
+    const marginRight = 10
+    const pageUsableWidth =
+      doc.internal.pageSize.getWidth() - marginLeft - marginRight
+
+    doc.autoTable({
+      startY: 26,
+      head: [["E-mail Livre"]],
+      body: emailsLivres,
+      styles: {
+        font: "helvetica",
+        fontSize: compact.bodyFontSize,
+        cellPadding: compact.cellPadding,
+        overflow: "linebreak",
+        valign: "middle",
+        lineWidth: 0.1,
+        lineColor: [220, 220, 220],
+      },
+      headStyles: {
+        fillColor: [31, 78, 120],
+        textColor: [255, 255, 255],
+        fontStyle: "bold",
+        fontSize: compact.headFontSize,
+        cellPadding: compact.cellPadding,
+      },
+      alternateRowStyles: {
+        fillColor: [247, 249, 252],
+      },
+      columnStyles: {
+        0: { cellWidth: pageUsableWidth },
+      },
+      margin: { top: 26, left: marginLeft, right: marginRight },
+      tableWidth: pageUsableWidth,
+    })
+  }
+
+  function numerosTable() {
+    drawTitle("Números Livres")
+
+    const rowCount = numerosLivres.length
+    const compact =
+      rowCount > 45
+        ? { bodyFontSize: 7, headFontSize: 7.2, cellPadding: 1 }
+        : { bodyFontSize: 9, headFontSize: 9, cellPadding: 2 }
+
+    const marginLeft = 55
+    const marginRight = 55
+    const pageUsableWidth =
+      doc.internal.pageSize.getWidth() - marginLeft - marginRight
+
+    doc.autoTable({
+      startY: 26,
+      head: [["Número Livre"]],
+      body: numerosLivres,
+      styles: {
+        font: "helvetica",
+        fontSize: compact.bodyFontSize,
+        cellPadding: compact.cellPadding,
+        overflow: "linebreak",
+        valign: "middle",
+        lineWidth: 0.1,
+        lineColor: [220, 220, 220],
+      },
+      headStyles: {
+        fillColor: [31, 78, 120],
+        textColor: [255, 255, 255],
+        fontStyle: "bold",
+        fontSize: compact.headFontSize,
+        cellPadding: compact.cellPadding,
+      },
+      alternateRowStyles: {
+        fillColor: [247, 249, 252],
+      },
+      columnStyles: {
+        0: { cellWidth: pageUsableWidth },
+      },
+      margin: { top: 26, left: marginLeft, right: marginRight },
+      tableWidth: pageUsableWidth,
+    })
+  }
+
+  if (sheetType === "contatos") {
+    contatosTable()
+    doc.save("contatos_dipedra.pdf")
+    return
+  }
+
+  if (sheetType === "emails") {
+    emailsTable()
+    doc.save("emails_livres_dipedra.pdf")
+    return
+  }
+
+  if (sheetType === "numeros") {
+    numerosTable()
+    doc.save("numeros_livres_dipedra.pdf")
+    return
+  }
+
+  contatosTable()
+  doc.addPage("a4", "landscape")
+  emailsTable()
+  doc.addPage("a4", "landscape")
+  numerosTable()
+
+  doc.save("gestor_contatos_dipedra.pdf")
+}
+
+btnExportPdf.addEventListener("click", openExportPdfModal)
 
 modalClose.addEventListener("click", closeModal)
 modalCancel.addEventListener("click", closeModal)
