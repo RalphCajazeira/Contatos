@@ -147,6 +147,21 @@
       ]
     },
     {
+      "id": "f3b3961c-f476-454c-9263-f1677057b130",
+      "name": "Desirée Lisboa",
+      "active": true,
+      "inactivatedAt": null,
+      "emails": [
+        {
+          "id": "bf1e86ca-0fd7-4278-82b8-5d710fd86cea",
+          "email": "comercial09@dipedra.com",
+          "type": "principal",
+          "aliases": []
+        }
+      ],
+      "phones": []
+    },
+    {
       "id": "e9ad9b1f-5491-410f-9a6f-168f3f900488",
       "name": "Encarregado Expedição",
       "active": false,
@@ -206,6 +221,20 @@
         {
           "id": "84390ca8-0343-4abd-83c5-b891be442077",
           "number": "71999119466",
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "33826c28-03a4-48a1-85e0-ba45718089de",
+      "name": "Ionilda (Mãe Marcos)",
+      "active": true,
+      "inactivatedAt": null,
+      "emails": [],
+      "phones": [
+        {
+          "id": "3f61bf9f-2c42-4865-b7e0-b2554d6cd942",
+          "number": "71997339498",
           "type": "dipedra"
         }
       ]
@@ -402,39 +431,12 @@
       ]
     },
     {
-      "id": "33826c28-03a4-48a1-85e0-ba45718089de",
-      "name": "Nilda",
-      "active": true,
-      "inactivatedAt": null,
-      "emails": [],
-      "phones": [
-        {
-          "id": "3f61bf9f-2c42-4865-b7e0-b2554d6cd942",
-          "number": "71997339498",
-          "type": "dipedra"
-        }
-      ]
-    },
-    {
       "id": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
       "name": "Patricia Alves",
-      "active": true,
-      "inactivatedAt": null,
-      "emails": [
-        {
-          "id": "bfb1e7a0-b43d-4b72-8b09-e42da94d48a0",
-          "email": "sac@dipedra.com",
-          "type": "principal",
-          "aliases": []
-        }
-      ],
-      "phones": [
-        {
-          "id": "9f9f6542-cac3-4319-b8f2-9c659189006b",
-          "number": "71996282288",
-          "type": "dipedra"
-        }
-      ]
+      "active": false,
+      "inactivatedAt": "2026-04-17T11:18:17.594Z",
+      "emails": [],
+      "phones": []
     },
     {
       "id": "b9011537-0208-48dc-ac99-1d62d698242d",
@@ -614,6 +616,13 @@
   ],
   "availablePhones": [
     {
+      "number": "71996282288",
+      "type": "dipedra",
+      "lastUserId": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
+      "lastUserName": "Patricia Alves",
+      "releasedAt": "2026-04-17T11:18:17.594Z"
+    },
+    {
       "number": "71999001163",
       "type": "dipedra",
       "lastUserId": null,
@@ -636,6 +645,114 @@
     }
   ],
   "history": [
+    {
+      "id": "79ce2ca9-036a-4a2d-85b7-03dddb6dc0fa",
+      "entityType": "email",
+      "entityValue": "comercial09@dipedra.com",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "toUserName": "Desirée Lisboa",
+      "changedAt": "2026-04-17T17:59:13.429Z",
+      "metadata": {
+        "previousAvailableLastUserId": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
+        "previousAvailableLastUserName": "Patricia Alves",
+        "previousReleasedAt": "2026-04-17T11:18:17.593Z"
+      }
+    },
+    {
+      "id": "efb4cb9d-5f56-406b-bdc4-49df5f2b779d",
+      "entityType": "contact",
+      "entityValue": "Desirée Lisboa",
+      "action": "created",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "toUserName": "Desirée Lisboa",
+      "changedAt": "2026-04-17T17:59:02.873Z",
+      "metadata": {}
+    },
+    {
+      "id": "0604d5f4-9d0a-4416-bf00-f0c0c8112fdd",
+      "entityType": "alias",
+      "entityValue": "sac@dipedra.com",
+      "action": "created_from_available_rename",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-17T17:58:40.101Z",
+      "metadata": {
+        "principalEmail": "comercial09@dipedra.com"
+      }
+    },
+    {
+      "id": "a5c4aabb-02d8-47cc-893f-6e00f2790ed3",
+      "entityType": "email",
+      "entityValue": "comercial09@dipedra.com",
+      "action": "renamed_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-17T17:58:40.101Z",
+      "metadata": {
+        "oldEmail": "sac@dipedra.com",
+        "newEmail": "comercial09@dipedra.com"
+      }
+    },
+    {
+      "id": "2e929fa5-112a-4633-89b5-7006505c308a",
+      "entityType": "contact",
+      "entityValue": "Ionilda (Mãe Marcos)",
+      "action": "renamed",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "33826c28-03a4-48a1-85e0-ba45718089de",
+      "toUserName": "Ionilda (Mãe Marcos)",
+      "changedAt": "2026-04-17T11:21:36.311Z",
+      "metadata": {
+        "previousName": "Nilda",
+        "newName": "Ionilda (Mãe Marcos)"
+      }
+    },
+    {
+      "id": "daa55c41-d3b0-4531-a55a-3a1e8bab0973",
+      "entityType": "contact",
+      "entityValue": "Patricia Alves",
+      "action": "inactivated",
+      "fromUserId": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
+      "fromUserName": "Patricia Alves",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-17T11:18:17.594Z",
+      "metadata": {}
+    },
+    {
+      "id": "b135d864-168e-4190-b8bd-a84942ee8a96",
+      "entityType": "phone",
+      "entityValue": "71996282288",
+      "action": "released_on_inactivate",
+      "fromUserId": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
+      "fromUserName": "Patricia Alves",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-17T11:18:17.594Z",
+      "metadata": {}
+    },
+    {
+      "id": "336d1f06-1f6a-4bcd-9754-077a320d8363",
+      "entityType": "email",
+      "entityValue": "sac@dipedra.com",
+      "action": "released_on_inactivate",
+      "fromUserId": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
+      "fromUserName": "Patricia Alves",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-04-17T11:18:17.594Z",
+      "metadata": {}
+    },
     {
       "id": "752d957e-699e-48ea-93c3-9c1a47290f91",
       "entityType": "alias",
