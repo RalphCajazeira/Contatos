@@ -7,9 +7,9 @@
       "inactivatedAt": null,
       "emails": [
         {
-          "id": "4441a736-0afb-44c7-a6d4-2920db86520f",
-          "email": "andresoledade@dipedra.com",
-          "type": "principal",
+          "id": "dc674349-d78f-4f84-b8fc-34217c5d3588",
+          "email": "andredipedra@gmail.com",
+          "type": "pessoal",
           "aliases": []
         }
       ],
@@ -49,9 +49,9 @@
       "inactivatedAt": null,
       "emails": [
         {
-          "id": "cc218fce-45ed-4f8b-ad42-0505fd24b42b",
-          "email": "projetos01@dipedra.com",
-          "type": "principal",
+          "id": "48058927-40c1-4d49-96f8-71ebc5be6647",
+          "email": "projetosdipedra@gmail.com",
+          "type": "pessoal",
           "aliases": []
         }
       ],
@@ -78,11 +78,6 @@
       ],
       "phones": [
         {
-          "id": "1b6f2f10-7d70-4487-a002-4ca874a20f66",
-          "number": "71996730348",
-          "type": "pessoal"
-        },
-        {
           "id": "ef60b9a4-131b-4cfe-8443-acd048aad84a",
           "number": "71982346190",
           "type": "dipedra"
@@ -97,9 +92,17 @@
       "emails": [
         {
           "id": "974bba41-9229-4340-814d-97a936e0ddb7",
-          "email": "comercial07@dipedra.com",
+          "email": "comercial01@dipedra.com",
           "type": "principal",
-          "aliases": []
+          "aliases": [
+            {
+              "id": "c62a1b0d-fe46-4cb2-b052-80c296f4077d",
+              "email": "comercial07@dipedra.com",
+              "createdAt": "2026-06-12T11:57:52.779Z",
+              "deletedAt": null,
+              "active": true
+            }
+          ]
         }
       ],
       "phones": []
@@ -122,29 +125,21 @@
           "id": "886cc11f-aa23-40f8-80c9-3c6dec0de3ec",
           "number": "71999566893",
           "type": "pessoal"
+        },
+        {
+          "id": "af5285ef-f5f2-46b4-b807-3bbd994cf45a",
+          "number": "71999972265",
+          "type": "dipedra"
         }
       ]
     },
     {
       "id": "0e25a8eb-baa3-45c1-861e-f70e2627fdb0",
       "name": "Débora Ribeiro",
-      "active": true,
-      "inactivatedAt": null,
-      "emails": [
-        {
-          "id": "43f85086-0158-4752-9e6a-623483da3099",
-          "email": "comercial06@dipedra.com",
-          "type": "principal",
-          "aliases": []
-        }
-      ],
-      "phones": [
-        {
-          "id": "ddb716de-de4e-46f0-a486-46f84d7b628c",
-          "number": "71999815414",
-          "type": "dipedra"
-        }
-      ]
+      "active": false,
+      "inactivatedAt": "2026-06-12T12:02:25.629Z",
+      "emails": [],
+      "phones": []
     },
     {
       "id": "f3b3961c-f476-454c-9263-f1677057b130",
@@ -153,13 +148,25 @@
       "inactivatedAt": null,
       "emails": [
         {
-          "id": "bf1e86ca-0fd7-4278-82b8-5d710fd86cea",
-          "email": "comercial09@dipedra.com",
+          "id": "ed7c24a8-86db-422f-8105-d80ad52325ce",
+          "email": "comercial02@dipedra.com",
           "type": "principal",
+          "aliases": []
+        },
+        {
+          "id": "e4a86d3b-cbff-4680-b5cb-e5071536d7ea",
+          "email": "comercial09@dipedra.com",
+          "type": "alias",
           "aliases": []
         }
       ],
-      "phones": []
+      "phones": [
+        {
+          "id": "b86f9240-b4f7-4bda-8f23-14be68857941",
+          "number": "71982764178",
+          "type": "dipedra"
+        }
+      ]
     },
     {
       "id": "e9ad9b1f-5491-410f-9a6f-168f3f900488",
@@ -246,9 +253,9 @@
       "inactivatedAt": null,
       "emails": [
         {
-          "id": "b0ba3346-2295-40a5-b316-49cbdfe6f172",
-          "email": "jorgepenna@dipedra.com",
-          "type": "principal",
+          "id": "4ab528c1-1ddd-45d7-a421-e1d35ec59f5c",
+          "email": "jorgedipedra@gmail.com",
+          "type": "pessoal",
           "aliases": []
         }
       ],
@@ -268,9 +275,17 @@
       "emails": [
         {
           "id": "3c3ec2f0-a425-4bbe-a33a-eb5d0e272319",
-          "email": "comercial08@dipedra.com",
+          "email": "orcamento02@dipedra.com",
           "type": "principal",
-          "aliases": []
+          "aliases": [
+            {
+              "id": "13588f46-3ed9-47bc-b24d-eae01904a596",
+              "email": "comercial08@dipedra.com",
+              "createdAt": "2026-06-12T12:04:55.377Z",
+              "deletedAt": null,
+              "active": true
+            }
+          ]
         }
       ],
       "phones": [
@@ -289,9 +304,17 @@
       "emails": [
         {
           "id": "54d08d2c-7ffd-4184-910e-80800acb3918",
-          "email": "comercial10@dipedra.com",
+          "email": "orcamento01@dipedra.com",
           "type": "principal",
-          "aliases": []
+          "aliases": [
+            {
+              "id": "3fd2d40f-760d-45bf-8ba3-e63e90489090",
+              "email": "comercial10@dipedra.com",
+              "createdAt": "2026-06-12T12:05:09.256Z",
+              "deletedAt": null,
+              "active": true
+            }
+          ]
         }
       ],
       "phones": [
@@ -304,7 +327,7 @@
     },
     {
       "id": "41a53e9e-2716-47a1-a9ae-bead2f7cf9f7",
-      "name": "Kailon Carregosa",
+      "name": "Kailon / Lennon",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -332,8 +355,8 @@
       ],
       "phones": [
         {
-          "id": "c46c8c5f-5771-4362-b317-153287317371",
-          "number": "71992160020",
+          "id": "af1031b6-21b0-4979-808d-9ac4aea21964",
+          "number": "71991355034",
           "type": "pessoal"
         }
       ]
@@ -383,17 +406,31 @@
     {
       "id": "b7e870eb-3f54-4aed-b1f4-67a4e94aae2d",
       "name": "Lennon Reis",
+      "active": false,
+      "inactivatedAt": "2026-06-12T12:07:10.894Z",
+      "emails": [],
+      "phones": []
+    },
+    {
+      "id": "e8b08d47-a5bd-4482-af36-28192f40d13a",
+      "name": "Luciene Jesus",
       "active": true,
       "inactivatedAt": null,
       "emails": [
         {
-          "id": "21b3d78c-6d31-42e1-94d7-50eae4e8ac64",
-          "email": "pcp01@dipedra.com",
+          "id": "4ad7dfc0-d03a-46b7-a51d-386806ea0e0b",
+          "email": "comercial06@dipedra.com",
           "type": "principal",
           "aliases": []
         }
       ],
-      "phones": []
+      "phones": [
+        {
+          "id": "333d908c-0727-4cd8-bae9-d204e27cef84",
+          "number": "71999815414",
+          "type": "dipedra"
+        }
+      ]
     },
     {
       "id": "a3391ef5-202d-4676-acc6-61b181c7aac2",
@@ -419,16 +456,10 @@
     {
       "id": "b679ebf7-45aa-4567-b24d-9f5e4b630edf",
       "name": "Marcos SW4",
-      "active": true,
-      "inactivatedAt": null,
+      "active": false,
+      "inactivatedAt": "2026-06-12T11:59:01.862Z",
       "emails": [],
-      "phones": [
-        {
-          "id": "e33d5660-c895-486f-8a5a-2afebc1f7d12",
-          "number": "71999972265",
-          "type": "dipedra"
-        }
-      ]
+      "phones": []
     },
     {
       "id": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
@@ -514,16 +545,24 @@
       "emails": [
         {
           "id": "268f7295-7142-4710-bf5c-c7d2cb2ce612",
-          "email": "comercial03@dipedra.com",
+          "email": "tecnico02@dipedra.com",
           "type": "principal",
-          "aliases": []
+          "aliases": [
+            {
+              "id": "911d295c-172c-4ca4-822c-73cd2246b69d",
+              "email": "comercial03@dipedra.com",
+              "createdAt": "2026-06-12T12:11:16.409Z",
+              "deletedAt": null,
+              "active": true
+            }
+          ]
         }
       ],
       "phones": [
         {
-          "id": "7df66c61-6c4f-4166-b9cc-7cb8781eeee5",
+          "id": "337f03ad-6321-4c8c-8d4f-4e4a076013f8",
           "number": "71992339558",
-          "type": "pessoal"
+          "type": "dipedra"
         }
       ]
     },
@@ -542,9 +581,30 @@
       ],
       "phones": [
         {
-          "id": "a3467909-9264-41b8-960e-4a82bc8bc1f9",
+          "id": "7764a8bc-482a-46e0-af30-d86e7faa0927",
           "number": "71996730348",
-          "type": "pessoal"
+          "type": "dipedra"
+        }
+      ]
+    },
+    {
+      "id": "662768aa-5476-4bde-9026-2ca9cf445167",
+      "name": "Thamiris Dias",
+      "active": true,
+      "inactivatedAt": null,
+      "emails": [
+        {
+          "id": "73b83043-c498-404d-ac12-1448202bdfac",
+          "email": "financeiro2@dipedra.com",
+          "type": "principal",
+          "aliases": []
+        }
+      ],
+      "phones": [
+        {
+          "id": "90275860-eab9-4543-ad60-9b78a9e13cd9",
+          "number": "71999411203",
+          "type": "dipedra"
         }
       ]
     },
@@ -563,17 +623,17 @@
       ],
       "phones": [
         {
-          "id": "0c89cfba-abcb-477a-8cc6-750c5efd608f",
+          "id": "87e17a11-128b-4400-9867-8cca10fb6112",
           "number": "71988992889",
-          "type": "dipedra"
+          "type": "pessoal"
         }
       ]
     },
     {
       "id": "c441183f-ac16-491b-8f90-f6e35cefba46",
       "name": "Vicente Santana",
-      "active": true,
-      "inactivatedAt": null,
+      "active": false,
+      "inactivatedAt": "2026-06-12T12:22:48.992Z",
       "emails": [],
       "phones": [
         {
@@ -586,32 +646,33 @@
     {
       "id": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
       "name": "Wallace Araujo",
-      "active": true,
-      "inactivatedAt": null,
-      "emails": [
-        {
-          "id": "cbb59661-cc78-4135-9bd3-c3c1e9bfbc14",
-          "email": "comercial02@dipedra.com",
-          "type": "principal",
-          "aliases": []
-        }
-      ],
-      "phones": [
-        {
-          "id": "29bc9a77-4bba-4b91-88a4-6b4df6c15a13",
-          "number": "71982764178",
-          "type": "dipedra"
-        }
-      ]
+      "active": false,
+      "inactivatedAt": "2026-06-12T11:59:20.379Z",
+      "emails": [],
+      "phones": []
     }
   ],
   "availableEmails": [
     {
-      "email": "financeiro2@dipedra.com",
+      "email": "andresoledade@dipedra.com",
       "type": "principal",
-      "lastUserId": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
-      "lastUserName": "Francisca Cruz",
-      "releasedAt": "2026-04-16T21:24:47.729Z"
+      "lastUserId": "0fa32ff5-fb3a-461f-9346-83a44c6bb166",
+      "lastUserName": "Andre Soledade",
+      "releasedAt": "2026-06-12T11:55:24.375Z"
+    },
+    {
+      "email": "pcp01@dipedra.com",
+      "type": "principal",
+      "lastUserId": "b7e870eb-3f54-4aed-b1f4-67a4e94aae2d",
+      "lastUserName": "Lennon Reis",
+      "releasedAt": "2026-06-12T12:07:10.894Z"
+    },
+    {
+      "email": "projetos01@dipedra.com",
+      "type": "principal",
+      "lastUserId": "102ddc02-eae2-450e-88ae-531f6b0be871",
+      "lastUserName": "Cassia Cazaes",
+      "releasedAt": "2026-06-12T11:56:32.697Z"
     }
   ],
   "availablePhones": [
@@ -630,13 +691,6 @@
       "releasedAt": null
     },
     {
-      "number": "71999411203",
-      "type": "dipedra",
-      "lastUserId": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
-      "lastUserName": "Francisca Cruz",
-      "releasedAt": "2026-04-16T21:24:47.730Z"
-    },
-    {
       "number": "71999551699",
       "type": "dipedra",
       "lastUserId": "e9ad9b1f-5491-410f-9a6f-168f3f900488",
@@ -645,6 +699,718 @@
     }
   ],
   "history": [
+    {
+      "id": "fbf020bd-4564-43b5-a12b-a44a5e20a31b",
+      "entityType": "contact",
+      "entityValue": "Vicente Santana",
+      "action": "inactivated",
+      "fromUserId": "c441183f-ac16-491b-8f90-f6e35cefba46",
+      "fromUserName": "Vicente Santana",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:22:48.992Z",
+      "metadata": {}
+    },
+    {
+      "id": "621f81c2-f611-4af2-9ffc-07bda8d6e995",
+      "entityType": "phone",
+      "entityValue": "71991355034",
+      "action": "assigned",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "334a7992-7331-436a-8735-02995a0b463c",
+      "toUserName": "Kaique Tosta",
+      "changedAt": "2026-06-12T12:21:19.656Z",
+      "metadata": {}
+    },
+    {
+      "id": "b32a8d7e-afc3-4f3d-b58e-420053113579",
+      "entityType": "phone",
+      "entityValue": "71992160020",
+      "action": "deleted",
+      "fromUserId": "334a7992-7331-436a-8735-02995a0b463c",
+      "fromUserName": "Kaique Tosta",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:21:01.475Z",
+      "metadata": {}
+    },
+    {
+      "id": "a95dca14-cda4-4933-b7fa-5f257d8bede6",
+      "entityType": "phone",
+      "entityValue": "71982764178",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "toUserName": "Desirée Lisboa",
+      "changedAt": "2026-06-12T12:19:58.815Z",
+      "metadata": {
+        "previousAvailableLastUserId": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
+        "previousAvailableLastUserName": "Wallace Araujo",
+        "previousReleasedAt": "2026-06-12T11:59:20.378Z"
+      }
+    },
+    {
+      "id": "da4eac88-6e7c-43ce-8366-3e4c1cbb2900",
+      "entityType": "phone",
+      "entityValue": "71988992889",
+      "action": "assigned",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "78cfa935-4a6d-4a14-86c9-0bcf40afca36",
+      "toUserName": "Tiago Giffoni",
+      "changedAt": "2026-06-12T12:18:25.955Z",
+      "metadata": {}
+    },
+    {
+      "id": "6e3838a6-117b-466b-9eac-fa6e5a9f4f31",
+      "entityType": "phone",
+      "entityValue": "71988992889",
+      "action": "deleted_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:18:03.029Z",
+      "metadata": {}
+    },
+    {
+      "id": "47772dc7-be36-4d84-98a1-8da5d4064028",
+      "entityType": "phone",
+      "entityValue": "71988992889",
+      "action": "deleted",
+      "fromUserId": "78cfa935-4a6d-4a14-86c9-0bcf40afca36",
+      "fromUserName": "Tiago Giffoni",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:17:58.235Z",
+      "metadata": {}
+    },
+    {
+      "id": "ffb83594-2474-4ef7-86d4-380ae6ff7c77",
+      "entityType": "phone",
+      "entityValue": "71999411203",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "662768aa-5476-4bde-9026-2ca9cf445167",
+      "toUserName": "Thamiris Dias",
+      "changedAt": "2026-06-12T12:17:03.765Z",
+      "metadata": {
+        "previousAvailableLastUserId": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
+        "previousAvailableLastUserName": "Francisca Cruz",
+        "previousReleasedAt": "2026-04-16T21:24:47.730Z"
+      }
+    },
+    {
+      "id": "b5f18668-e5fb-4f63-82e0-c35f4fff82ef",
+      "entityType": "email",
+      "entityValue": "financeiro2@dipedra.com",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "662768aa-5476-4bde-9026-2ca9cf445167",
+      "toUserName": "Thamiris Dias",
+      "changedAt": "2026-06-12T12:16:35.829Z",
+      "metadata": {
+        "previousAvailableLastUserId": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
+        "previousAvailableLastUserName": "Francisca Cruz",
+        "previousReleasedAt": "2026-04-16T21:24:47.729Z"
+      }
+    },
+    {
+      "id": "6e89b329-8d91-41fc-b2c8-0766e26092b0",
+      "entityType": "contact",
+      "entityValue": "Thamiris Dias",
+      "action": "created",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "662768aa-5476-4bde-9026-2ca9cf445167",
+      "toUserName": "Thamiris Dias",
+      "changedAt": "2026-06-12T12:16:24.156Z",
+      "metadata": {}
+    },
+    {
+      "id": "c358fd9e-9745-40ee-8864-d6a4bfb1f452",
+      "entityType": "phone",
+      "entityValue": "71996730348",
+      "action": "assigned",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "f23f17a6-2864-400b-a775-8ba940f064fd",
+      "toUserName": "Romario Romero",
+      "changedAt": "2026-06-12T12:16:09.512Z",
+      "metadata": {}
+    },
+    {
+      "id": "ae1526d1-e38b-4921-8b11-470be8fbd504",
+      "entityType": "phone",
+      "entityValue": "71996730348",
+      "action": "deleted",
+      "fromUserId": "1e1f1179-911e-489a-9403-1c569927eafb",
+      "fromUserName": "Cleriston Rios",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:15:52.908Z",
+      "metadata": {}
+    },
+    {
+      "id": "e4978d9a-653e-45fe-8353-141873b6a12d",
+      "entityType": "phone",
+      "entityValue": "71996730348",
+      "action": "deleted",
+      "fromUserId": "f23f17a6-2864-400b-a775-8ba940f064fd",
+      "fromUserName": "Romario Romero",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:14:30.724Z",
+      "metadata": {}
+    },
+    {
+      "id": "64413c38-d4b5-443d-8114-99058a774e5a",
+      "entityType": "phone",
+      "entityValue": "71992339558",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "ecbccd50-eb65-4eb5-9487-86e41db59dd6",
+      "toUserName": "Rebeca Freitas",
+      "changedAt": "2026-06-12T12:13:55.955Z",
+      "metadata": {
+        "previousAvailableLastUserId": null,
+        "previousAvailableLastUserName": null,
+        "previousReleasedAt": null
+      }
+    },
+    {
+      "id": "01721bcb-16ee-4879-a63c-534422610217",
+      "entityType": "phone",
+      "entityValue": "71992339558",
+      "action": "created_as_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:13:22.642Z",
+      "metadata": {}
+    },
+    {
+      "id": "0eaaed2d-5bdd-41dc-87c4-15c85ffb2560",
+      "entityType": "phone",
+      "entityValue": "71992339558",
+      "action": "deleted",
+      "fromUserId": "ecbccd50-eb65-4eb5-9487-86e41db59dd6",
+      "fromUserName": "Rebeca Freitas",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:12:03.905Z",
+      "metadata": {}
+    },
+    {
+      "id": "e28000cc-629e-4cd4-b068-171c4c138ad2",
+      "entityType": "alias",
+      "entityValue": "comercial03@dipedra.com",
+      "action": "created_from_rename",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "ecbccd50-eb65-4eb5-9487-86e41db59dd6",
+      "toUserName": "Rebeca Freitas",
+      "changedAt": "2026-06-12T12:11:16.409Z",
+      "metadata": {
+        "principalEmail": "tecnico02@dipedra.com"
+      }
+    },
+    {
+      "id": "95c7535b-234a-4c60-bb45-86f2c2574671",
+      "entityType": "email",
+      "entityValue": "tecnico02@dipedra.com",
+      "action": "renamed",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "ecbccd50-eb65-4eb5-9487-86e41db59dd6",
+      "toUserName": "Rebeca Freitas",
+      "changedAt": "2026-06-12T12:11:16.409Z",
+      "metadata": {
+        "oldEmail": "comercial03@dipedra.com",
+        "newEmail": "tecnico02@dipedra.com"
+      }
+    },
+    {
+      "id": "3bf741fd-ba2d-44d4-a59c-cba337e69ca5",
+      "entityType": "phone",
+      "entityValue": "71999815414",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "e8b08d47-a5bd-4482-af36-28192f40d13a",
+      "toUserName": "Luciene Jesus",
+      "changedAt": "2026-06-12T12:10:19.967Z",
+      "metadata": {
+        "previousAvailableLastUserId": "f3b3961c-f476-454c-9263-f1677057b130",
+        "previousAvailableLastUserName": "Desirée Lisboa",
+        "previousReleasedAt": "2026-06-12T12:10:07.082Z"
+      }
+    },
+    {
+      "id": "21a42329-8516-498b-a645-d6845af3fc9f",
+      "entityType": "phone",
+      "entityValue": "71999815414",
+      "action": "deleted",
+      "fromUserId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "fromUserName": "Desirée Lisboa",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:10:07.082Z",
+      "metadata": {}
+    },
+    {
+      "id": "3539f0d7-ab6a-46fe-b56b-63c93b38b7c9",
+      "entityType": "email",
+      "entityValue": "comercial06@dipedra.com",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "e8b08d47-a5bd-4482-af36-28192f40d13a",
+      "toUserName": "Luciene Jesus",
+      "changedAt": "2026-06-12T12:07:59.364Z",
+      "metadata": {
+        "previousAvailableLastUserId": "0e25a8eb-baa3-45c1-861e-f70e2627fdb0",
+        "previousAvailableLastUserName": "Débora Ribeiro",
+        "previousReleasedAt": "2026-06-12T12:02:25.629Z"
+      }
+    },
+    {
+      "id": "30ad5354-5817-46ae-8469-b9625a6e7a5e",
+      "entityType": "contact",
+      "entityValue": "Luciene Jesus",
+      "action": "created",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "e8b08d47-a5bd-4482-af36-28192f40d13a",
+      "toUserName": "Luciene Jesus",
+      "changedAt": "2026-06-12T12:07:41.292Z",
+      "metadata": {}
+    },
+    {
+      "id": "ec8f57b3-5532-49be-a598-5fab569e9d16",
+      "entityType": "contact",
+      "entityValue": "Lennon Reis",
+      "action": "inactivated",
+      "fromUserId": "b7e870eb-3f54-4aed-b1f4-67a4e94aae2d",
+      "fromUserName": "Lennon Reis",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:07:10.894Z",
+      "metadata": {}
+    },
+    {
+      "id": "aaec656e-399c-4b48-9735-5c46e3c208ca",
+      "entityType": "email",
+      "entityValue": "pcp01@dipedra.com",
+      "action": "released_on_inactivate",
+      "fromUserId": "b7e870eb-3f54-4aed-b1f4-67a4e94aae2d",
+      "fromUserName": "Lennon Reis",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:07:10.894Z",
+      "metadata": {}
+    },
+    {
+      "id": "d5b98136-5032-4f46-a71c-85dcd2f7a971",
+      "entityType": "contact",
+      "entityValue": "Kailon / Lennon",
+      "action": "renamed",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "41a53e9e-2716-47a1-a9ae-bead2f7cf9f7",
+      "toUserName": "Kailon / Lennon",
+      "changedAt": "2026-06-12T12:05:30.394Z",
+      "metadata": {
+        "previousName": "Kailon Carregosa",
+        "newName": "Kailon / Lennon"
+      }
+    },
+    {
+      "id": "a8b36af4-1a4f-45b8-9912-28795f80fa58",
+      "entityType": "alias",
+      "entityValue": "comercial10@dipedra.com",
+      "action": "created_from_rename",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "0507027b-c1af-4826-bc6a-0ef4b8f866ce",
+      "toUserName": "Kailane Marques",
+      "changedAt": "2026-06-12T12:05:09.256Z",
+      "metadata": {
+        "principalEmail": "orcamento01@dipedra.com"
+      }
+    },
+    {
+      "id": "cedec441-184b-4a38-b05f-2ee5d121d5a7",
+      "entityType": "email",
+      "entityValue": "orcamento01@dipedra.com",
+      "action": "renamed",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "0507027b-c1af-4826-bc6a-0ef4b8f866ce",
+      "toUserName": "Kailane Marques",
+      "changedAt": "2026-06-12T12:05:09.256Z",
+      "metadata": {
+        "oldEmail": "comercial10@dipedra.com",
+        "newEmail": "orcamento01@dipedra.com"
+      }
+    },
+    {
+      "id": "2309e4b9-935e-4a6c-9b4d-f57dbc316e77",
+      "entityType": "alias",
+      "entityValue": "comercial08@dipedra.com",
+      "action": "created_from_rename",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "533cc8eb-2273-43f0-9fda-b225d201faa7",
+      "toUserName": "José Gabriel Tenório",
+      "changedAt": "2026-06-12T12:04:55.377Z",
+      "metadata": {
+        "principalEmail": "orcamento02@dipedra.com"
+      }
+    },
+    {
+      "id": "e9f54a44-e88f-4996-90c5-2e88aceac872",
+      "entityType": "email",
+      "entityValue": "orcamento02@dipedra.com",
+      "action": "renamed",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "533cc8eb-2273-43f0-9fda-b225d201faa7",
+      "toUserName": "José Gabriel Tenório",
+      "changedAt": "2026-06-12T12:04:55.377Z",
+      "metadata": {
+        "oldEmail": "comercial08@dipedra.com",
+        "newEmail": "orcamento02@dipedra.com"
+      }
+    },
+    {
+      "id": "69a0181f-d655-4773-8f1b-e2b24b4e5caa",
+      "entityType": "email",
+      "entityValue": "jorgedipedra@gmail.com",
+      "action": "assigned",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "7f737f4b-143b-47f7-b478-c31338ef232b",
+      "toUserName": "Jorge Penna",
+      "changedAt": "2026-06-12T12:04:21.617Z",
+      "metadata": {}
+    },
+    {
+      "id": "72d66d6e-d6c8-4ac3-9b32-d760e8071018",
+      "entityType": "email",
+      "entityValue": "jorgedipedra@gmail.com",
+      "action": "deleted_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:04:01.511Z",
+      "metadata": {}
+    },
+    {
+      "id": "98e75cb9-eca7-4668-b22f-dcb89feb351e",
+      "entityType": "email",
+      "entityValue": "jorgedipedra@gmail.com",
+      "action": "deleted",
+      "fromUserId": "7f737f4b-143b-47f7-b478-c31338ef232b",
+      "fromUserName": "Jorge Penna",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:03:53.735Z",
+      "metadata": {}
+    },
+    {
+      "id": "7bf5f1bc-94f9-4162-9237-bcb1558ce2cd",
+      "entityType": "alias",
+      "entityValue": "jorgepenna@dipedra.com",
+      "action": "created_from_rename",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "7f737f4b-143b-47f7-b478-c31338ef232b",
+      "toUserName": "Jorge Penna",
+      "changedAt": "2026-06-12T12:03:23.762Z",
+      "metadata": {
+        "principalEmail": "jorgedipedra@gmail.com"
+      }
+    },
+    {
+      "id": "2295260f-537d-47dd-899b-b09c7d3ede28",
+      "entityType": "email",
+      "entityValue": "jorgedipedra@gmail.com",
+      "action": "renamed",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "7f737f4b-143b-47f7-b478-c31338ef232b",
+      "toUserName": "Jorge Penna",
+      "changedAt": "2026-06-12T12:03:23.762Z",
+      "metadata": {
+        "oldEmail": "jorgepenna@dipedra.com",
+        "newEmail": "jorgedipedra@gmail.com"
+      }
+    },
+    {
+      "id": "cf37434c-b837-4408-895f-5ca7749e78ea",
+      "entityType": "phone",
+      "entityValue": "71999815414",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "toUserName": "Desirée Lisboa",
+      "changedAt": "2026-06-12T12:02:45.256Z",
+      "metadata": {
+        "previousAvailableLastUserId": "0e25a8eb-baa3-45c1-861e-f70e2627fdb0",
+        "previousAvailableLastUserName": "Débora Ribeiro",
+        "previousReleasedAt": "2026-06-12T12:02:25.629Z"
+      }
+    },
+    {
+      "id": "c302cca4-91a1-41ab-9931-f4f1cde344a3",
+      "entityType": "contact",
+      "entityValue": "Débora Ribeiro",
+      "action": "inactivated",
+      "fromUserId": "0e25a8eb-baa3-45c1-861e-f70e2627fdb0",
+      "fromUserName": "Débora Ribeiro",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:02:25.629Z",
+      "metadata": {}
+    },
+    {
+      "id": "068dbe6e-fd7d-4d8c-b0ab-e8818a96cf40",
+      "entityType": "phone",
+      "entityValue": "71999815414",
+      "action": "released_on_inactivate",
+      "fromUserId": "0e25a8eb-baa3-45c1-861e-f70e2627fdb0",
+      "fromUserName": "Débora Ribeiro",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:02:25.629Z",
+      "metadata": {}
+    },
+    {
+      "id": "d5765033-b2d1-4417-9349-52577ee7fdc8",
+      "entityType": "email",
+      "entityValue": "comercial06@dipedra.com",
+      "action": "released_on_inactivate",
+      "fromUserId": "0e25a8eb-baa3-45c1-861e-f70e2627fdb0",
+      "fromUserName": "Débora Ribeiro",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:02:25.629Z",
+      "metadata": {}
+    },
+    {
+      "id": "35377ecb-2676-489d-8ee5-b5c405b1381f",
+      "entityType": "alias",
+      "entityValue": "comercial09@dipedra.com",
+      "action": "assigned",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "toUserName": "Desirée Lisboa",
+      "changedAt": "2026-06-12T12:01:29.154Z",
+      "metadata": {}
+    },
+    {
+      "id": "37afa936-0bbf-4b00-a51d-b66bd4179eeb",
+      "entityType": "email",
+      "entityValue": "comercial09@dipedra.com",
+      "action": "deleted_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:01:18.845Z",
+      "metadata": {}
+    },
+    {
+      "id": "378d8fce-1aae-458e-873d-2cf92a11fdd6",
+      "entityType": "email",
+      "entityValue": "comercial09@dipedra.com",
+      "action": "deleted",
+      "fromUserId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "fromUserName": "Desirée Lisboa",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T12:00:48.303Z",
+      "metadata": {}
+    },
+    {
+      "id": "09685eb8-8bfb-4ada-805e-191dd07d1e86",
+      "entityType": "email",
+      "entityValue": "comercial02@dipedra.com",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "toUserName": "Desirée Lisboa",
+      "changedAt": "2026-06-12T12:00:41.059Z",
+      "metadata": {
+        "previousAvailableLastUserId": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
+        "previousAvailableLastUserName": "Wallace Araujo",
+        "previousReleasedAt": "2026-06-12T11:59:20.378Z"
+      }
+    },
+    {
+      "id": "cba6c28c-a88d-4f78-9f2f-10f7144b2916",
+      "entityType": "contact",
+      "entityValue": "Wallace Araujo",
+      "action": "inactivated",
+      "fromUserId": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
+      "fromUserName": "Wallace Araujo",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T11:59:20.379Z",
+      "metadata": {}
+    },
+    {
+      "id": "dc8e83a5-aab1-44e0-8f0d-27aba4073bda",
+      "entityType": "phone",
+      "entityValue": "71982764178",
+      "action": "released_on_inactivate",
+      "fromUserId": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
+      "fromUserName": "Wallace Araujo",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T11:59:20.379Z",
+      "metadata": {}
+    },
+    {
+      "id": "533455ca-e28e-404e-a49a-15d002c8e8ca",
+      "entityType": "email",
+      "entityValue": "comercial02@dipedra.com",
+      "action": "released_on_inactivate",
+      "fromUserId": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
+      "fromUserName": "Wallace Araujo",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T11:59:20.378Z",
+      "metadata": {}
+    },
+    {
+      "id": "0ec3815e-c8f4-49b1-b024-2a4af51f4c19",
+      "entityType": "phone",
+      "entityValue": "71999972265",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "22e1da03-8bc1-4b84-8376-492ca417e838",
+      "toUserName": "Davi Silva",
+      "changedAt": "2026-06-12T11:59:10.545Z",
+      "metadata": {
+        "previousAvailableLastUserId": "b679ebf7-45aa-4567-b24d-9f5e4b630edf",
+        "previousAvailableLastUserName": "Marcos SW4",
+        "previousReleasedAt": "2026-06-12T11:59:01.862Z"
+      }
+    },
+    {
+      "id": "06f29138-5ed7-4722-b520-861c4728d8b9",
+      "entityType": "contact",
+      "entityValue": "Marcos SW4",
+      "action": "inactivated",
+      "fromUserId": "b679ebf7-45aa-4567-b24d-9f5e4b630edf",
+      "fromUserName": "Marcos SW4",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T11:59:01.862Z",
+      "metadata": {}
+    },
+    {
+      "id": "9fb61779-f261-49a8-866b-6b6b3473c863",
+      "entityType": "phone",
+      "entityValue": "71999972265",
+      "action": "released_on_inactivate",
+      "fromUserId": "b679ebf7-45aa-4567-b24d-9f5e4b630edf",
+      "fromUserName": "Marcos SW4",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T11:59:01.862Z",
+      "metadata": {}
+    },
+    {
+      "id": "59a4e4ab-e3ec-496a-bde6-3600d014bc6a",
+      "entityType": "alias",
+      "entityValue": "comercial07@dipedra.com",
+      "action": "created_from_rename",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "9f13e904-ecb8-4481-96c9-ac45934c0caf",
+      "toUserName": "Danilo Costa",
+      "changedAt": "2026-06-12T11:57:52.779Z",
+      "metadata": {
+        "principalEmail": "comercial01@dipedra.com"
+      }
+    },
+    {
+      "id": "99825c98-8df1-4e2a-96da-8fc824ec12e6",
+      "entityType": "email",
+      "entityValue": "comercial01@dipedra.com",
+      "action": "renamed",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "9f13e904-ecb8-4481-96c9-ac45934c0caf",
+      "toUserName": "Danilo Costa",
+      "changedAt": "2026-06-12T11:57:52.779Z",
+      "metadata": {
+        "oldEmail": "comercial07@dipedra.com",
+        "newEmail": "comercial01@dipedra.com"
+      }
+    },
+    {
+      "id": "e178fa81-a28d-42f4-92b0-9d88d1d0ff43",
+      "entityType": "email",
+      "entityValue": "projetosdipedra@gmail.com",
+      "action": "assigned",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "102ddc02-eae2-450e-88ae-531f6b0be871",
+      "toUserName": "Cassia Cazaes",
+      "changedAt": "2026-06-12T11:57:14.034Z",
+      "metadata": {}
+    },
+    {
+      "id": "b14426fb-e911-4f1a-8b19-e0041bfe5e10",
+      "entityType": "email",
+      "entityValue": "projetos01@dipedra.com",
+      "action": "deleted",
+      "fromUserId": "102ddc02-eae2-450e-88ae-531f6b0be871",
+      "fromUserName": "Cassia Cazaes",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T11:56:32.697Z",
+      "metadata": {}
+    },
+    {
+      "id": "ea8d0200-de39-42c6-b2a3-604a8bdf1c65",
+      "entityType": "email",
+      "entityValue": "andredipedra@gmail.com",
+      "action": "assigned",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "0fa32ff5-fb3a-461f-9346-83a44c6bb166",
+      "toUserName": "Andre Soledade",
+      "changedAt": "2026-06-12T11:55:39.353Z",
+      "metadata": {}
+    },
+    {
+      "id": "ad08b0c8-11d6-4b72-8f57-bc6d7dc64bf3",
+      "entityType": "email",
+      "entityValue": "andresoledade@dipedra.com",
+      "action": "deleted",
+      "fromUserId": "0fa32ff5-fb3a-461f-9346-83a44c6bb166",
+      "fromUserName": "Andre Soledade",
+      "toUserId": null,
+      "toUserName": null,
+      "changedAt": "2026-06-12T11:55:24.376Z",
+      "metadata": {}
+    },
     {
       "id": "79ce2ca9-036a-4a2d-85b7-03dddb6dc0fa",
       "entityType": "email",
@@ -843,7 +1609,101 @@
       "metadata": {}
     }
   ],
-  "deletedEmails": [],
-  "deletedPhones": [],
+  "deletedEmails": [
+    {
+      "id": "4441a736-0afb-44c7-a6d4-2920db86520f",
+      "email": "andresoledade@dipedra.com",
+      "type": "principal",
+      "aliases": [],
+      "userId": "0fa32ff5-fb3a-461f-9346-83a44c6bb166",
+      "userName": "Andre Soledade",
+      "deletedAt": "2026-06-12T11:55:24.375Z"
+    },
+    {
+      "id": "cc218fce-45ed-4f8b-ad42-0505fd24b42b",
+      "email": "projetos01@dipedra.com",
+      "type": "principal",
+      "aliases": [],
+      "userId": "102ddc02-eae2-450e-88ae-531f6b0be871",
+      "userName": "Cassia Cazaes",
+      "deletedAt": "2026-06-12T11:56:32.697Z"
+    },
+    {
+      "id": "bf1e86ca-0fd7-4278-82b8-5d710fd86cea",
+      "email": "comercial09@dipedra.com",
+      "type": "alternativo",
+      "aliases": [],
+      "userId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "userName": "Desirée Lisboa",
+      "deletedAt": "2026-06-12T12:00:48.303Z"
+    },
+    {
+      "id": "b0ba3346-2295-40a5-b316-49cbdfe6f172",
+      "email": "jorgedipedra@gmail.com",
+      "type": "principal",
+      "aliases": [
+        {
+          "id": "5bb3d77a-f393-4ae7-a3af-99491a67e89d",
+          "email": "jorgepenna@dipedra.com",
+          "createdAt": "2026-06-12T12:03:23.762Z",
+          "deletedAt": null,
+          "active": true
+        }
+      ],
+      "userId": "7f737f4b-143b-47f7-b478-c31338ef232b",
+      "userName": "Jorge Penna",
+      "deletedAt": "2026-06-12T12:03:53.735Z"
+    }
+  ],
+  "deletedPhones": [
+    {
+      "id": "82e26be2-6b06-4dc7-a274-f95d8ebdd204",
+      "number": "71999815414",
+      "type": "dipedra",
+      "userId": "f3b3961c-f476-454c-9263-f1677057b130",
+      "userName": "Desirée Lisboa",
+      "deletedAt": "2026-06-12T12:10:07.082Z"
+    },
+    {
+      "id": "7df66c61-6c4f-4166-b9cc-7cb8781eeee5",
+      "number": "71992339558",
+      "type": "pessoal",
+      "userId": "ecbccd50-eb65-4eb5-9487-86e41db59dd6",
+      "userName": "Rebeca Freitas",
+      "deletedAt": "2026-06-12T12:12:03.905Z"
+    },
+    {
+      "id": "a3467909-9264-41b8-960e-4a82bc8bc1f9",
+      "number": "71996730348",
+      "type": "pessoal",
+      "userId": "f23f17a6-2864-400b-a775-8ba940f064fd",
+      "userName": "Romario Romero",
+      "deletedAt": "2026-06-12T12:14:30.724Z"
+    },
+    {
+      "id": "1b6f2f10-7d70-4487-a002-4ca874a20f66",
+      "number": "71996730348",
+      "type": "pessoal",
+      "userId": "1e1f1179-911e-489a-9403-1c569927eafb",
+      "userName": "Cleriston Rios",
+      "deletedAt": "2026-06-12T12:15:52.908Z"
+    },
+    {
+      "id": "0c89cfba-abcb-477a-8cc6-750c5efd608f",
+      "number": "71988992889",
+      "type": "dipedra",
+      "userId": "78cfa935-4a6d-4a14-86c9-0bcf40afca36",
+      "userName": "Tiago Giffoni",
+      "deletedAt": "2026-06-12T12:17:58.235Z"
+    },
+    {
+      "id": "c46c8c5f-5771-4362-b317-153287317371",
+      "number": "71992160020",
+      "type": "pessoal",
+      "userId": "334a7992-7331-436a-8735-02995a0b463c",
+      "userName": "Kaique Tosta",
+      "deletedAt": "2026-06-12T12:21:01.475Z"
+    }
+  ],
   "deletedAliases": []
 }
