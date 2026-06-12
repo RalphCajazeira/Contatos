@@ -9,6 +9,9 @@ function getContatosData() {
   return [...(state.users || [])]
     .filter((user) => user.active !== false)
     .sort((a, b) =>
+      String(a.setor || "").localeCompare(String(b.setor || ""), "pt-BR", {
+        sensitivity: "base",
+      }) ||
       String(a.name || "").localeCompare(String(b.name || ""), "pt-BR", {
         sensitivity: "base",
       }),
@@ -44,6 +47,24 @@ function getContatosData() {
 
       status: user.active === false ? "Inativo" : "Ativo",
     }))
+}
+
+function getResumoContatos() {
+  const contatosAtivos = (state.users || []).filter((user) => user.active !== false)
+  const emailsDipedra = contatosAtivos.reduce(
+    (total, user) =>
+      total +
+      (user.emails || []).filter((item) => item.type === "principal").length,
+    0,
+  )
+  const numerosDipedra = contatosAtivos.reduce(
+    (total, user) =>
+      total +
+      (user.phones || []).filter((item) => item.type === "dipedra").length,
+    0,
+  )
+
+  return { emailsDipedra, numerosDipedra }
 }
 
 function getEmailsLivresData() {
@@ -128,13 +149,23 @@ async function exportExcel(sheetType) {
     contatosSheet.columns = [
       { header: "Setor", key: "setor", width: 24 },
       { header: "Nome", key: "nome", width: 28 },
-      { header: "E-mail Principal", key: "emailPrincipal", width: 30 },
+      { header: "E-mail Dipedra", key: "emailPrincipal", width: 30 },
       { header: "E-mail Pessoal", key: "emailPessoal", width: 30 },
       { header: "Telefone Dipedra", key: "telefoneDipedra", width: 18 },
       { header: "Telefone Pessoal", key: "telefonePessoal", width: 18 },
     ]
 
     getContatosData().forEach((item) => contatosSheet.addRow(item))
+    const resumo = getResumoContatos()
+    const resumoRow = contatosSheet.addRow({
+      setor: "Total",
+      nome: "",
+      emailPrincipal: `E-mails Dipedra: ${resumo.emailsDipedra}`,
+      emailPessoal: "",
+      telefoneDipedra: `Números Dipedra: ${resumo.numerosDipedra}`,
+      telefonePessoal: "",
+    })
+    resumoRow.font = { bold: true }
     styleSheet(contatosSheet, "F")
   }
 
@@ -210,7 +241,7 @@ function exportContatosPdf(doc) {
       [
         "Setor",
         "Nome",
-        "E-mail Principal",
+        "E-mail Dipedra",
         "E-mail Pessoal",
         "Telefone Dipedra",
         "Telefone Pessoal",
@@ -238,6 +269,13 @@ function exportContatosPdf(doc) {
     margin: { top: 24, left: 6, right: 6 },
     tableWidth: "auto",
   })
+
+  const resumo = getResumoContatos()
+  const finalY = doc.lastAutoTable ? doc.lastAutoTable.finalY + 8 : 32
+  doc.setFont("helvetica", "bold")
+  doc.setFontSize(9)
+  doc.text(`E-mails Dipedra: ${resumo.emailsDipedra}`, 14, finalY)
+  doc.text(`Números Dipedra: ${resumo.numerosDipedra}`, 14, finalY + 5)
 }
 
 function exportEmailsPdf(doc) {
