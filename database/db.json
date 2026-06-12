@@ -110,7 +110,13 @@
           ]
         }
       ],
-      "phones": []
+      "phones": [
+        {
+          "id": "d09a0fe8-9337-4d42-8e61-4149dfd02341",
+          "number": "71997430416",
+          "type": "dipedra"
+        }
+      ]
     },
     {
       "id": "22e1da03-8bc1-4b84-8376-492ca417e838",
@@ -472,7 +478,7 @@
         {
           "id": "c8414a2a-c12b-411e-ae66-9deb6a9f4425",
           "number": "71992339491",
-          "type": "pessoal"
+          "type": "dipedra"
         }
       ]
     },
@@ -711,11 +717,18 @@
   ],
   "availablePhones": [
     {
+      "number": "71992160020",
+      "type": "dipedra",
+      "lastUserId": null,
+      "lastUserName": null,
+      "releasedAt": null
+    },
+    {
       "number": "71996282288",
       "type": "dipedra",
-      "lastUserId": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
-      "lastUserName": "Patricia Alves",
-      "releasedAt": "2026-04-17T11:18:17.594Z"
+      "lastUserId": null,
+      "lastUserName": null,
+      "releasedAt": null
     },
     {
       "number": "71999001163",
@@ -727,12 +740,28 @@
     {
       "number": "71999551699",
       "type": "dipedra",
-      "lastUserId": "e9ad9b1f-5491-410f-9a6f-168f3f900488",
-      "lastUserName": "Encarregado Expedição",
-      "releasedAt": "2026-04-16T21:24:36.323Z"
+      "lastUserId": null,
+      "lastUserName": null,
+      "releasedAt": null
     }
   ],
   "history": [
+    {
+      "id": "8193ff6a-1ef5-4595-8df7-ed171a4d9a4d",
+      "entityType": "phone",
+      "entityValue": "71997430416",
+      "action": "assigned_from_available",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "9f13e904-ecb8-4481-96c9-ac45934c0caf",
+      "toUserName": "Danilo Costa",
+      "changedAt": "2026-06-12T12:50:39.402Z",
+      "metadata": {
+        "previousAvailableLastUserId": null,
+        "previousAvailableLastUserName": null,
+        "previousReleasedAt": null
+      }
+    },
     {
       "id": "c6b1ec0c-9b43-40f7-8ac9-78b54dc64883",
       "entityType": "contact",
