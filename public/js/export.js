@@ -127,11 +127,9 @@ async function exportExcel(sheetType) {
     contatosSheet.columns = [
       { header: "Nome", key: "nome", width: 28 },
       { header: "E-mail Principal", key: "emailPrincipal", width: 30 },
-      { header: "Alias", key: "emailAlias", width: 30 },
+      { header: "E-mail Pessoal", key: "emailPessoal", width: 30 },
       { header: "Telefone Dipedra", key: "telefoneDipedra", width: 18 },
       { header: "Telefone Pessoal", key: "telefonePessoal", width: 18 },
-      { header: "E-mail Pessoal", key: "emailPessoal", width: 30 },
-      { header: "Status", key: "status", width: 14 },
     ]
 
     getContatosData().forEach((item) => contatosSheet.addRow(item))
@@ -196,11 +194,9 @@ function exportContatosPdf(doc) {
   const contatos = getContatosData().map((item) => [
     item.nome,
     item.emailPrincipal,
-    item.emailAlias,
+    item.emailPessoal,
     item.telefoneDipedra,
     item.telefonePessoal,
-    item.emailPessoal,
-    item.status,
   ])
 
   drawPdfTitle(doc, "Contatos")
@@ -211,11 +207,9 @@ function exportContatosPdf(doc) {
       [
         "Nome",
         "E-mail Principal",
-        "Alias",
+        "E-mail Pessoal",
         "Telefone Dipedra",
         "Telefone Pessoal",
-        "E-mail Pessoal",
-        "Status",
       ],
     ],
     body: contatos,
