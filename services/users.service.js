@@ -90,6 +90,7 @@ function normalizeUser(user) {
   return {
     id: user.id,
     name: String(user.name || "").trim(),
+    setor: String(user.setor || "").trim(),
     active: user.active !== false,
     inactivatedAt: user.inactivatedAt || null,
     emails: Array.isArray(user.emails)
@@ -205,9 +206,10 @@ function addHistory(data, entry) {
   data.history.unshift(entry)
 }
 
-function addUser({ name }) {
+function addUser({ name, setor }) {
   const data = readData()
   const parsedName = String(name || "").trim()
+  const parsedSetor = String(setor || "").trim()
 
   if (!parsedName) {
     const error = new Error("Nome é obrigatório.")
@@ -218,6 +220,7 @@ function addUser({ name }) {
   const user = {
     id: crypto.randomUUID(),
     name: parsedName,
+    setor: parsedSetor,
     active: true,
     inactivatedAt: null,
     emails: [],
@@ -242,7 +245,7 @@ function addUser({ name }) {
   return user
 }
 
-function updateUser({ id, name }) {
+function updateUser({ id, name, setor }) {
   const data = readData()
   const user = data.users.find((u) => u.id === id)
 
@@ -253,6 +256,7 @@ function updateUser({ id, name }) {
   }
 
   const parsedName = String(name || "").trim()
+  const parsedSetor = String(setor || "").trim()
 
   if (!parsedName) {
     const error = new Error("Nome é obrigatório.")
@@ -262,6 +266,7 @@ function updateUser({ id, name }) {
 
   const previousName = user.name
   user.name = parsedName
+  user.setor = parsedSetor
 
   addHistory(
     data,

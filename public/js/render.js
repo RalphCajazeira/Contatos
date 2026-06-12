@@ -118,14 +118,12 @@ function renderUsers(users) {
         <div class="contact-top">
           <div>
             <div class="contact-name">${escapeHtml(user.name)}</div>
+            <div class="empty">${escapeHtml(user.setor || "Sem setor")}</div>
             <div class="empty">${principalEmail ? escapeHtml(principalEmail.email) : "Sem e-mail principal"}</div>
-            <div style="margin-top: 6px;">
-              <span class="${statusClass}">${statusLabel}</span>
-            </div>
           </div>
 
           <div class="contact-edit">
-            <button class="small-btn" onclick="openEditContactName('${user.id}', '${escapeHtml(user.name)}')">Editar nome</button>
+            <button class="small-btn" onclick="openEditContactName('${user.id}', '${escapeHtml(user.name)}', '${escapeHtml(user.setor || "")}')">Editar</button>
             <button class="small-btn" onclick="openAddEmailToUser('${user.id}')">Adicionar e-mail</button>
             <button class="small-btn" onclick="openAddPhoneToUser('${user.id}')">Adicionar número</button>
             ${

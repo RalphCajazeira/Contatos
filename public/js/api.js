@@ -20,19 +20,19 @@ export async function fetchSummary() {
   return request(`${API}/summary`)
 }
 
-export async function createContact(name) {
+export async function createContact(name, setor = "") {
   return request(`${API}/contact`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name }),
+    body: JSON.stringify({ name, setor }),
   })
 }
 
-export async function updateContactName(id, name) {
+export async function updateContactName(id, name, setor = "") {
   return request(`${API}/contact/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name }),
+    body: JSON.stringify({ name, setor }),
   })
 }
 

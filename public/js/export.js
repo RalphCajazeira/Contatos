@@ -15,6 +15,7 @@ function getContatosData() {
     )
     .map((user) => ({
       nome: user.name || "",
+      setor: user.setor || "",
 
       emailPrincipal: (user.emails || [])
         .filter((item) => item.type === "principal")
@@ -125,6 +126,7 @@ async function exportExcel(sheetType) {
     })
 
     contatosSheet.columns = [
+      { header: "Setor", key: "setor", width: 24 },
       { header: "Nome", key: "nome", width: 28 },
       { header: "E-mail Principal", key: "emailPrincipal", width: 30 },
       { header: "E-mail Pessoal", key: "emailPessoal", width: 30 },
@@ -133,7 +135,7 @@ async function exportExcel(sheetType) {
     ]
 
     getContatosData().forEach((item) => contatosSheet.addRow(item))
-    styleSheet(contatosSheet, "G")
+    styleSheet(contatosSheet, "F")
   }
 
   if (sheetType === "emails" || sheetType === "all") {
@@ -192,6 +194,7 @@ function drawPdfTitle(doc, title) {
 
 function exportContatosPdf(doc) {
   const contatos = getContatosData().map((item) => [
+    item.setor,
     item.nome,
     item.emailPrincipal,
     item.emailPessoal,
@@ -205,6 +208,7 @@ function exportContatosPdf(doc) {
     startY: 24,
     head: [
       [
+        "Setor",
         "Nome",
         "E-mail Principal",
         "E-mail Pessoal",

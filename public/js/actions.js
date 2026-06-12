@@ -64,12 +64,15 @@ export function userOptions() {
     }))
 }
 
-export function openEditContactName(userId, currentName) {
+export function openEditContactName(userId, currentName, currentSetor = "") {
   openModal(
     "Editar nome do contato",
-    [{ name: "name", label: "Nome completo", value: currentName }],
+    [
+      { name: "name", label: "Nome completo", value: currentName },
+      { name: "setor", label: "Setor", value: currentSetor },
+    ],
     async (values) => {
-      await updateContactName(userId, values.name)
+      await updateContactName(userId, values.name, values.setor)
       await load()
     },
   )
@@ -247,9 +250,14 @@ export async function createContactAction() {
         label: "Nome completo",
         placeholder: "Ex.: Danilo Costa",
       },
+      {
+        name: "setor",
+        label: "Setor",
+        placeholder: "Ex.: Comercial 01",
+      },
     ],
     async (values) => {
-      await createContact(values.name)
+      await createContact(values.name, values.setor)
       await load()
     },
   )

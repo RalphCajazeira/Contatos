@@ -3,6 +3,7 @@
     {
       "id": "0fa32ff5-fb3a-461f-9346-83a44c6bb166",
       "name": "Andre Soledade",
+      "setor": "Capitador",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -24,6 +25,7 @@
     {
       "id": "21a361c0-1e79-484e-ace5-05f72ebb4fd4",
       "name": "Caroline Campos",
+      "setor": "Financeiro 01",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -45,6 +47,7 @@
     {
       "id": "102ddc02-eae2-450e-88ae-531f6b0be871",
       "name": "Cassia Cazaes",
+      "setor": "Temporario",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -66,6 +69,7 @@
     {
       "id": "1e1f1179-911e-489a-9403-1c569927eafb",
       "name": "Cleriston Rios",
+      "setor": "Gestor Adm",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -87,6 +91,7 @@
     {
       "id": "9f13e904-ecb8-4481-96c9-ac45934c0caf",
       "name": "Danilo Costa",
+      "setor": "Comercial 01",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -110,6 +115,7 @@
     {
       "id": "22e1da03-8bc1-4b84-8376-492ca417e838",
       "name": "Davi Silva",
+      "setor": "Almoxarifado",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -136,6 +142,7 @@
     {
       "id": "0e25a8eb-baa3-45c1-861e-f70e2627fdb0",
       "name": "Débora Ribeiro",
+      "setor": "",
       "active": false,
       "inactivatedAt": "2026-06-12T12:02:25.629Z",
       "emails": [],
@@ -144,6 +151,7 @@
     {
       "id": "f3b3961c-f476-454c-9263-f1677057b130",
       "name": "Desirée Lisboa",
+      "setor": "Comercial 02",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -171,6 +179,7 @@
     {
       "id": "e9ad9b1f-5491-410f-9a6f-168f3f900488",
       "name": "Encarregado Expedição",
+      "setor": "",
       "active": false,
       "inactivatedAt": "2026-04-16T21:24:36.324Z",
       "emails": [],
@@ -179,6 +188,7 @@
     {
       "id": "962e3d61-5769-420e-baff-65e4b51d3929",
       "name": "Érico Santos",
+      "setor": "Tecnico 01",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -200,6 +210,7 @@
     {
       "id": "6ff9398b-08fb-4182-a1cf-3e83629079ba",
       "name": "Francisca Cruz",
+      "setor": "",
       "active": false,
       "inactivatedAt": "2026-04-16T21:24:47.730Z",
       "emails": [],
@@ -214,6 +225,7 @@
     {
       "id": "8894d896-eb7e-4136-9981-55f1c4a10e60",
       "name": "Helder Souza",
+      "setor": "Logistica",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -235,6 +247,7 @@
     {
       "id": "33826c28-03a4-48a1-85e0-ba45718089de",
       "name": "Ionilda (Mãe Marcos)",
+      "setor": "",
       "active": true,
       "inactivatedAt": null,
       "emails": [],
@@ -249,6 +262,7 @@
     {
       "id": "7f737f4b-143b-47f7-b478-c31338ef232b",
       "name": "Jorge Penna",
+      "setor": "Gestor Atacado",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -270,6 +284,7 @@
     {
       "id": "533cc8eb-2273-43f0-9fda-b225d201faa7",
       "name": "José Gabriel Tenório",
+      "setor": "Orcamentista 02",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -299,6 +314,7 @@
     {
       "id": "0507027b-c1af-4826-bc6a-0ef4b8f866ce",
       "name": "Kailane Marques",
+      "setor": "Orcamentista 01",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -328,6 +344,7 @@
     {
       "id": "41a53e9e-2716-47a1-a9ae-bead2f7cf9f7",
       "name": "Kailon / Lennon",
+      "setor": "PCP",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -343,6 +360,7 @@
     {
       "id": "334a7992-7331-436a-8735-02995a0b463c",
       "name": "Kaique Tosta",
+      "setor": "Gestor Producao",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -364,6 +382,7 @@
     {
       "id": "fea35aba-59d3-4320-9f72-e8c536533686",
       "name": "Laissa Mattos",
+      "setor": "Comercial 03",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -385,6 +404,7 @@
     {
       "id": "40532b33-3e5d-4051-8832-3f161c73e2cc",
       "name": "Leandro Amaral",
+      "setor": "Comercial 04",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -406,6 +426,7 @@
     {
       "id": "b7e870eb-3f54-4aed-b1f4-67a4e94aae2d",
       "name": "Lennon Reis",
+      "setor": "",
       "active": false,
       "inactivatedAt": "2026-06-12T12:07:10.894Z",
       "emails": [],
@@ -414,6 +435,7 @@
     {
       "id": "e8b08d47-a5bd-4482-af36-28192f40d13a",
       "name": "Luciene Jesus",
+      "setor": "Comercial 06",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -435,6 +457,7 @@
     {
       "id": "a3391ef5-202d-4676-acc6-61b181c7aac2",
       "name": "Marcos Oliveira",
+      "setor": "Gestor",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -456,6 +479,7 @@
     {
       "id": "b679ebf7-45aa-4567-b24d-9f5e4b630edf",
       "name": "Marcos SW4",
+      "setor": "",
       "active": false,
       "inactivatedAt": "2026-06-12T11:59:01.862Z",
       "emails": [],
@@ -464,6 +488,7 @@
     {
       "id": "fc39871e-2ff5-4cab-a2cf-6b81a28b1c14",
       "name": "Patricia Alves",
+      "setor": "",
       "active": false,
       "inactivatedAt": "2026-04-17T11:18:17.594Z",
       "emails": [],
@@ -472,6 +497,7 @@
     {
       "id": "b9011537-0208-48dc-ac99-1d62d698242d",
       "name": "Patrícia Anastácio",
+      "setor": "Gestor Comercial",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -493,6 +519,7 @@
     {
       "id": "32126a94-dbc0-4cec-a00f-3317e5c3de2e",
       "name": "Pedro Oliveira",
+      "setor": "Comercial 05",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -519,6 +546,7 @@
     {
       "id": "0e4bfb6a-90d0-424e-adc9-a04fa4c0832d",
       "name": "Ralph Ramos",
+      "setor": "Staff + Sistema",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -540,6 +568,7 @@
     {
       "id": "ecbccd50-eb65-4eb5-9487-86e41db59dd6",
       "name": "Rebeca Freitas",
+      "setor": "Tecnico 02",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -569,6 +598,7 @@
     {
       "id": "f23f17a6-2864-400b-a775-8ba940f064fd",
       "name": "Romario Romero",
+      "setor": "Gestor Comercial",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -590,6 +620,7 @@
     {
       "id": "662768aa-5476-4bde-9026-2ca9cf445167",
       "name": "Thamiris Dias",
+      "setor": "Financeiro 02",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -611,6 +642,7 @@
     {
       "id": "78cfa935-4a6d-4a14-86c9-0bcf40afca36",
       "name": "Tiago Giffoni",
+      "setor": "Comercial Mercado Externo",
       "active": true,
       "inactivatedAt": null,
       "emails": [
@@ -632,6 +664,7 @@
     {
       "id": "c441183f-ac16-491b-8f90-f6e35cefba46",
       "name": "Vicente Santana",
+      "setor": "",
       "active": false,
       "inactivatedAt": "2026-06-12T12:22:48.992Z",
       "emails": [],
@@ -646,6 +679,7 @@
     {
       "id": "2cd3e81a-63a2-4b54-8452-5e60dbbad57c",
       "name": "Wallace Araujo",
+      "setor": "",
       "active": false,
       "inactivatedAt": "2026-06-12T11:59:20.379Z",
       "emails": [],
@@ -699,6 +733,21 @@
     }
   ],
   "history": [
+    {
+      "id": "c6b1ec0c-9b43-40f7-8ac9-78b54dc64883",
+      "entityType": "contact",
+      "entityValue": "Marcos Oliveira",
+      "action": "renamed",
+      "fromUserId": null,
+      "fromUserName": null,
+      "toUserId": "a3391ef5-202d-4676-acc6-61b181c7aac2",
+      "toUserName": "Marcos Oliveira",
+      "changedAt": "2026-06-12T12:37:05.274Z",
+      "metadata": {
+        "previousName": "Marcos Oliveira",
+        "newName": "Marcos Oliveira"
+      }
+    },
     {
       "id": "fbf020bd-4564-43b5-a12b-a44a5e20a31b",
       "entityType": "contact",

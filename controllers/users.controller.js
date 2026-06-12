@@ -19,6 +19,7 @@ exports.addUser = (req, res) => {
   try {
     const user = usersService.addUser({
       name: req.body.name,
+      setor: req.body.setor,
     })
 
     res.status(201).json(user)
@@ -32,6 +33,7 @@ exports.updateUser = (req, res) => {
     const user = usersService.updateUser({
       id: req.params.id,
       name: req.body.name,
+      setor: req.body.setor,
     })
 
     res.json(user)
